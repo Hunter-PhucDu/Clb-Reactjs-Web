@@ -1,0 +1,119 @@
+header {
+    .header-container {
+        a {
+            white-space: nowrap;
+            text-decoration: none;
+            color: black;
+
+            &:hover {
+                color: blue;
+
+            }
+        }
+
+        img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .header-top {
+            display: flex;
+            margin: auto;
+            height: 100px;
+            align-items: center;
+
+            .header-content {
+                margin-right: 30px;
+
+                .info {
+                    display: block;
+                    text-align: right;
+                    position: relative;
+
+                    span {
+                        .sub-info {
+                            list-style-type: none;
+                            padding: 0;
+                            position: absolute;
+                            top: calc(100%);
+                            right: 0;
+                            left: 0;
+                            width: 180px;
+                            text-align: left;
+                            display: none;
+                            border: 1px solid gray;
+                            box-shadow: 0 3px 3px 2px #80808024;
+                            z-index: 100;
+                            background-color: white;
+
+                            li {
+                                padding: 4px 15px;
+                                cursor: pointer;
+
+                                &:hover {
+                                    background-color: #80808024;
+                                }
+                            }
+                        }
+                    }
+
+                    &:hover .sub-info {
+                        display: block;
+                    }
+                }
+
+            }
+
+
+            .accountt {
+                .header-top-right {
+                    text-align: right;
+
+                    span {
+                        position: relative;
+                        padding-bottom: 10px;
+
+                        &:hover ul {
+                            display: block;
+                            list-style-type: none;
+                            text-decoration: none;
+
+                        }
+
+                        .user-action {
+                            padding: 0;
+                            position: absolute;
+                            top: calc(100%);
+                            right: 0;
+                            width: 190px;
+                            left: 0;
+                            text-align: left;
+                            display: none;
+                            border: 1px solid gray;
+                            box-shadow: 0 3px 3px 2px #80808024;
+                            z-index: 100;
+                            background-color: white;
+
+                            li {
+                                padding: 4px 15px;
+                                cursor: pointer;
+
+                                &:hover {
+                                    background-color: #80808024;
+                                }
+                            }
+                        }
+                    }
+
+                    .auth-container {
+                        display: flex;
+
+                        .auth {
+                            margin-right: 30px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
