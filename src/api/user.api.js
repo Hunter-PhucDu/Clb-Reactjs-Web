@@ -1,35 +1,48 @@
 import { AxiosAuth } from '../services/AxiosService';
 
-const getUsers = async (paginationData) => {
+const getUser = async () => {
   try {
-    const response = await AxiosAuth.get('/users', { params: paginationData });
+    const response = await AxiosAuth.get('/users');
     return response.data;
   } catch (error) {
     throw new Error(error.response?.data);
   }
 };
 
-const getUserById = async (userId) => {
+const updateUser = async (formData) => {
   try {
-    const response = await AxiosAuth.get(`/users/${userId}`);
+    const response = await AxiosAuth.put('/users/settings', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
     return response.data;
   } catch (error) {
     throw new Error(error.response?.data);
   }
 };
 
-const updateUser = async (userId, updateData) => {
+const changePassword = async (changePasswordDto) => {
   try {
-    const response = await AxiosAuth.put(`/users/${userId}`, updateData);
+    const response = await AxiosAuth.put('/users/change-password', changePasswordDto);
     return response.data;
   } catch (error) {
     throw new Error(error.response?.data);
   }
 };
 
-const changePassword = async (userId, passwordData) => {
+const getUsers = async () => {
   try {
-    const response = await AxiosAuth.put(`/users/${userId}/change-password`, passwordData);
+    const response = await AxiosAuth.get('/users/list');
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data);
+  }
+};
+
+const getUsersBySearch = async (searchParams = {}) => {
+  try {
+    const response = await AxiosAuth.get('/users/search', { params: searchParams });
     return response.data;
   } catch (error) {
     throw new Error(error.response?.data);
@@ -38,17 +51,19 @@ const changePassword = async (userId, passwordData) => {
 
 const deleteUser = async (userId) => {
   try {
-    await AxiosAuth.delete(`/users/${userId}`);
+    const response = await AxiosAuth.delete(`/users/${userId}`);
+    return response.data;
   } catch (error) {
     throw new Error(error.response?.data);
   }
 };
 
 const userServiceAPI = {
-  getUsers,
-  getUserById,
+  getUser,
   updateUser,
   changePassword,
+  getUsers,
+  getUsersBySearch,
   deleteUser,
 };
 

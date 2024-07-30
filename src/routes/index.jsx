@@ -1,12 +1,13 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import App from "../pages/homepage/App";
 import SignUp from "../pages/signUp";
-import Accounts from "../pages/accounts";
 import Account from "../pages/account";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "../pages/login";
 import { useSelector } from "react-redux";
+import TestApiPost from "../pages/testApiPost";
+import TestApiGet from "../pages/testApiGet";
 
 const Routers = () => {
   let auth = useSelector((state) => state.auth);
@@ -51,16 +52,16 @@ const Routers = () => {
           }
         />
         <Route
-          path="/management/accounts"
-          element={
-            auth.account.role === "admin" ? (
-              <Accounts />
-            ) : (
-              <Navigate replace to={"/"} />
-            )
-          }
+          path="/admin/testApiPost"
+          element={<TestApiPost /> }
+        />
+        <Route
+          path="/admin/testApiGet"
+          element={<TestApiGet /> }
         />
       </Routes>
+
+
     </BrowserRouter>
   );
 };

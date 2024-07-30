@@ -1,8 +1,17 @@
 import { Axios } from '../services/AxiosService';
 
-const login = async (credentials) => {
+const loginAdmin = async (credentials) => {
   try {
-    const response = await Axios.post('/auth/sign-in', credentials);
+    const response = await Axios.post('/auth/admin/sign-in', credentials);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data);
+  }
+};
+
+const loginUser = async (credentials) => {
+  try {
+    const response = await Axios.post('/auth/user/sign-in', credentials);
     return response.data;
   } catch (error) {
     throw new Error(error.response?.data);
@@ -37,7 +46,8 @@ const refreshToken = async (refreshTokenData) => {
 };
 
 const authAPI = {
-  login,
+  loginAdmin,
+  loginUser,
   signup,
   logout,
   refreshToken,

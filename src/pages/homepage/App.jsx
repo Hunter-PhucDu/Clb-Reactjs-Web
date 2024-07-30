@@ -3,9 +3,9 @@ import Header from "../../components/header";
 import Footer from "../../components/footer";
 import { useState } from "react";
 import News from "./components/news";
-import Members from "./components/members";
 import Contact from "./components/contact";
 import RegistrationForm from "./components/rigistrations";
+import Members from "./components/members";
 
 
 const App = ({ notify }) => {
