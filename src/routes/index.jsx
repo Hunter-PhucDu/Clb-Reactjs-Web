@@ -1,13 +1,14 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import App from "../pages/homepage/App";
-import SignUp from "../pages/signUp";
-import Account from "../pages/account";
+import { useSelector } from "react-redux";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Account from "../pages/account";
+import AdminLogin from "../pages/Admin/LogIn";
+import App from "../pages/homepage/App";
 import Login from "../pages/login";
-import { useSelector } from "react-redux";
-import TestApiPost from "../pages/testApiPost";
+import SignUp from "../pages/signUp";
 import TestApiGet from "../pages/testApiGet";
+import TestApiPost from "../pages/testApiPost";
 
 const Routers = () => {
   let auth = useSelector((state) => state.auth);
@@ -59,6 +60,18 @@ const Routers = () => {
           path="/admin/testApiGet"
           element={<TestApiGet /> }
         />
+
+         <Route
+          path="admin/login"
+          element={
+            !auth.isLoggedIn ? (
+              <AdminLogin notify={notify} />
+            ) : (
+              <Navigate replace to={"/"} />
+            )
+          }
+        />
+
       </Routes>
 
 

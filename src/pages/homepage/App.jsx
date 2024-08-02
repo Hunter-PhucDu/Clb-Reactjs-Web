@@ -8,6 +8,7 @@ import RegistrationForm from "./components/rigistrations";
 import Members from "./components/members";
 
 
+
 const App = ({ notify }) => {
   let [activeOn, setActiveOn] = useState("home");
 
@@ -15,9 +16,9 @@ const App = ({ notify }) => {
     <div className="app">
       <Header setActiveOn={setActiveOn} />
       {activeOn === "home" && (
-        <>  
-          
-        </>
+       <>
+     </>
+
       )}
       {activeOn === "info" && <Members notify={notify} />}
       {activeOn === "registrations" && <RegistrationForm notify={notify} />}
@@ -25,6 +26,8 @@ const App = ({ notify }) => {
       {activeOn === "contact" && <Contact notify={notify} />}
       <Footer />
     </div>
+
+    
   );
 };
 

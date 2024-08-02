@@ -1,11 +1,10 @@
-import "./index.scss";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { FaUserCircle } from "react-icons/fa";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import authAPI from "../../api/auth.api";
 import { onLogOut } from "../../redux/action/auth.action";
+import "./index.scss";
 
 const Header = ({ setActiveOn }) => {
   let auth = useSelector((state) => state.auth);
@@ -33,7 +32,6 @@ const Header = ({ setActiveOn }) => {
     setActiveOn(name)
     setActive(arr)
   }
-
 
   return (
     <header>

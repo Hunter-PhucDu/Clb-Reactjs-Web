@@ -1,12 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { onSignIn, onLogOut, onSignUp } from "../action/auth.action";
+import { onSignInUser, onSignInAdmin, onLogOut, onSignUp } from "../action/auth.action";
 
 const initialState = {
   account: {
     _id: null,
     avatar: null,
     userName: null,
-    email: null,
     role: null,
     accessToken: null,
     refreshToken: null,
@@ -28,18 +27,37 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // SIGN IN
-      .addCase(onSignIn.pending, (state, action) => {
+      // SIGN IN USER
+      .addCase(onSignInUser.pending, (state, action) => {
         state.loading = "pending";
         state.isLoggedIn = false;
       })
-      .addCase(onSignIn.fulfilled, (state, action) => {
+
+      .addCase(onSignInUser.fulfilled, (state, action) => {
         state.loading = "idle";
         state.isLoggedIn = true;
         state.account = action.payload;
         window.location.href = "/";
       })
-      .addCase(onSignIn.rejected, (state, action) => {
+      .addCase(onSignInUser.rejected, (state, action) => {
+        state.isLoggedIn = false;
+        state.loading = "idle";
+        // window.location.href = "/auth/sign-in";
+      })
+
+      // SIGN IN ADMIN
+      .addCase(onSignInAdmin.pending, (state, action) => {
+        state.loading = "pending";
+        state.isLoggedIn = false;
+      })
+
+      .addCase(onSignInAdmin.fulfilled, (state, action) => {
+        state.loading = "idle";
+        state.isLoggedIn = true;
+        state.account = action.payload;
+        window.location.href = "/";
+      })
+      .addCase(onSignInAdmin.rejected, (state, action) => {
         state.isLoggedIn = false;
         state.loading = "idle";
         // window.location.href = "/auth/sign-in";
