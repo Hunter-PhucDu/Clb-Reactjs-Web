@@ -8,6 +8,7 @@ import Login from "../pages/login";
 import { useSelector } from "react-redux";
 import TestApiPost from "../pages/testApiPost";
 import TestApiGet from "../pages/testApiGet";
+import AdminManagement from "../pages/adminManagement";
 
 const Routers = () => {
   let auth = useSelector((state) => state.auth);
@@ -59,9 +60,15 @@ const Routers = () => {
           path="/admin/testApiGet"
           element={<TestApiGet /> }
         />
+      <Route
+          path="/admin/management"
+          element={
+          
+              <AdminManagement />
+          }
+  
+        />
       </Routes>
-
-
     </BrowserRouter>
   );
 };
