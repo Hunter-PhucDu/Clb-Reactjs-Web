@@ -38,7 +38,7 @@ const AdminManagement = () => {
   const fetchAdmins = async () => {
     try {
       const response = await adminServiceAPI.getAdmins();
-      setAdmins(response.data); // set response.data to state
+      setAdmins(response.data); // set response.data to 
     } catch (error) {
       console.error('Error fetching admins:', error);
     }
