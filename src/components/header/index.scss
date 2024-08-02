@@ -109,7 +109,17 @@ header {
           span {
             position: relative;
             padding-bottom: 10px;
-
+            .user-avatar {
+              width: 40px; /* Điều chỉnh kích thước ảnh người dùng */
+              height: 40px; /* Điều chỉnh kích thước ảnh người dùng */
+              border-radius: 50%; /* Làm cho ảnh người dùng hình tròn */
+              object-fit: cover; /* Đảm bảo ảnh không bị biến dạng */
+            }
+            
+            .default-avatar {
+              font-size: 40px; /* Điều chỉnh kích thước biểu tượng */
+              color: #000; /* Màu sắc biểu tượng */
+            }
             &:hover ul {
               display: block;
               list-style-type: none;

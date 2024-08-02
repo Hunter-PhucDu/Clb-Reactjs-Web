@@ -34,6 +34,16 @@ const Header = ({ setActiveOn }) => {
     setActiveOn(name);
     setActive(arr);
   };
+  // Fallback URL for user avatars
+  const defaultAvatar = "https://cdn-icons-png.flaticon.com/512/5556/5556468.png"; // Thay thế với URL hợp lệ nếu cần
+
+  // Function to ensure the URL starts with http or https
+  const formatAvatarUrl = (url) => {
+    if (!url) return defaultAvatar; // Return default avatar if no URL
+    return url.startsWith("http://") || url.startsWith("https://")
+      ? url
+      : `http://${url}`;
+  };
 
   return (
     <header>
@@ -164,9 +174,10 @@ const Header = ({ setActiveOn }) => {
                     <span className="text-capitalize">
                       {auth.account.avatar ? (
                         <img
-                          src={auth.account.avatar}
+                          src={formatAvatarUrl(auth.account.avatar)}
                           alt="User Avatar"
                           className="user-avatar"
+                          onError={(e) => (e.target.src = defaultAvatar)} // Fallback nếu ảnh không tải được
                         />
                       ) : (
                         <FaUserCircle className="default-avatar" />
