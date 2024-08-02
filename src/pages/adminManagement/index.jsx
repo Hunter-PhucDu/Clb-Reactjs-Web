@@ -47,7 +47,7 @@ const AdminManagement = () => {
   const handleDeleteAdmin = async (adminId) => {
     try {
       await adminServiceAPI.deleteAdmin(adminId); // Gọi hàm deleteAdmin với adminId
-      fetchAdmins(); // Tải lại danh sách admin sau khi xóa
+      fetchAdmins(); // Tải lại danh sách admin sau khi xóa.....
     } catch (error) {
       console.error('Error deleting admin:', error);
     }
