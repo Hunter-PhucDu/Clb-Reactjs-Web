@@ -1,16 +1,22 @@
 header {
   .header-container {
-    background-color: #ceeffa;
-    background: linear-gradient(to right, #0d706e, #ceeffa);
+    //background-color: #ceeffa;
+    background-color: white;
+    //background: linear-gradient(to right, #fff, #ceeffa);
+    font-size: 14pt;
     position: relative;
     font-family: Georgia, "Times New Roman", Times, serif;
     a {
       white-space: nowrap;
       text-decoration: none;
-      color: #2c5f2d;
+      color: #000;
       &:hover {
-        color: white;
+        color: #f11703;
       }
+    }
+    .active a{
+      color: #f11703;
+      font-weight: bold;
     }
     .header-nav {
       flex-grow: 1;
@@ -36,28 +42,22 @@ header {
           /* Định dạng cho phần tử cha */
           display: flex;
           justify-content: center; /* Canh giữa theo chiều ngang */
-          align-items: center; /* Canh giữa theo chiều dọc */
-          height: 80px; /* Chiều cao của phần tử cha */
+          align-items: left; /* Canh giữa theo chiều dọc */
+          height: 100px; /* Chiều cao của phần tử cha */
           margin: 20px auto; /* Canh giữa theo chiều ngang */
           img {
             max-width: 100%;
             max-height: 100%;
             width: auto; /* Giữ nguyên tỷ lệ của hình ảnh */
-            height: 100px; /* Giữ nguyên tỷ lệ của hình ảnh */
+            height: auto; /* Giữ nguyên tỷ lệ của hình ảnh */
             object-fit: contain; /* Đảm bảo hình ảnh được hiển thị hoàn chỉnh */
-          }
-          a {
-            display: flex;       
-            flex-direction: column;
-            align-items: flex-start;
-            margin: 5px;
-            width: 80px;
-            height: 80px;
+            border-radius: 400px;
+            padding-right: 150px;
           }
         }
       }
       .header-content {
-        width: 150px;
+        width: 180px;
         height: 100%;
         text-align: center;
         padding-top: 30px;
@@ -74,7 +74,7 @@ header {
               top: calc(100%);
               right: 0;
               left: -10px;
-              width: 180px;
+              width: 220px;
               text-align: left;
               display: none;
               border: 1px solid gray;
@@ -87,7 +87,7 @@ header {
                 cursor: pointer;
 
                 &:hover {
-                  background-color: #0d706e;
+                  //background-color: #0d706e;
                 }
               }
             }
@@ -98,12 +98,10 @@ header {
           }
         }
         &:hover {
-          background-color: #0d706e;
+          //background-color: #0d706e;
         }
       }
-      .header-content .active a {
-        color: #ff0; /* Màu chữ khi mục được chọn */
-      }
+       
 
       .accountt {
         .header-top-right {
@@ -137,7 +135,7 @@ header {
                 cursor: pointer;
 
                 &:hover {
-                  background-color: #0d706e;
+                  //background-color: #0d706e;
                 }
               }
             }
@@ -154,6 +152,7 @@ header {
           }
         }
       }
+      
     }
   }
 }
