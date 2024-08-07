@@ -34,10 +34,8 @@ const Header = ({ setActiveOn }) => {
     setActiveOn(name);
     setActive(arr);
   };
-  // Fallback URL for user avatars
-  const defaultAvatar = "https://cdn-icons-png.flaticon.com/512/5556/5556468.png"; // Thay thế với URL hợp lệ nếu cần
+  const defaultAvatar = "https://i.imgur.com/Uoeie1w.jpg";
 
-  // Function to ensure the URL starts with http or https
   const formatAvatarUrl = (url) => {
     if (!url) return defaultAvatar; // Return default avatar if no URL
     return url.startsWith("http://") || url.startsWith("https://")
@@ -49,7 +47,7 @@ const Header = ({ setActiveOn }) => {
     <header>
       <div className="header-container">
         <div className="header-top">
-          <div className="header-conten">
+          <div className="header-conten ">
             <div className="logo">
               <Link to="/">
                 <img src={require("../../assets/image/DEA.png")} alt="logo" />
@@ -57,6 +55,9 @@ const Header = ({ setActiveOn }) => {
             </div>
           </div>
           <div className="header-content">
+            <div>
+
+            </div>
             <div class="home">
               <div
                 class={active[0]}
@@ -177,7 +178,7 @@ const Header = ({ setActiveOn }) => {
                           src={formatAvatarUrl(auth.account.avatar)}
                           alt="User Avatar"
                           className="user-avatar"
-                          onError={(e) => (e.target.src = defaultAvatar)} // Fallback nếu ảnh không tải được
+                          onError={(e) => (e.target.src = defaultAvatar)}
                         />
                       ) : (
                         <FaUserCircle className="default-avatar" />
@@ -211,6 +212,12 @@ const Header = ({ setActiveOn }) => {
                         <div
                           class={active[5]}
                           onClick={(e) => handleClickActiveNav(5, "login")}
+                        >
+                          <Link to="/">Đăng nhập</Link>
+                        </div>
+                        <div
+                          class={active[6]}
+                          onClick={(e) => handleClickActiveNav(6, "signup")}
                         >
                           <Link to="/">Đăng nhập</Link>
                         </div>

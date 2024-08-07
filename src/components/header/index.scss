@@ -1,8 +1,6 @@
 header {
   .header-container {
-    //background-color: #ceeffa;
     background-color: white;
-    //background: linear-gradient(to right, #fff, #ceeffa);
     font-size: 14pt;
     position: relative;
     font-family: Georgia, "Times New Roman", Times, serif;
@@ -20,7 +18,7 @@ header {
     }
     .header-nav {
       flex-grow: 1;
-      margin-left: 30px;
+      margin-left: 0px;
     }
 
     .nav-list {
@@ -35,33 +33,33 @@ header {
       margin: 0;
       height: 100px;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: flex-start;
 
       .header-conten {
         .logo {
-          /* Định dạng cho phần tử cha */
           display: flex;
-          justify-content: center; /* Canh giữa theo chiều ngang */
-          align-items: left; /* Canh giữa theo chiều dọc */
-          height: 100px; /* Chiều cao của phần tử cha */
-          margin: 20px auto; /* Canh giữa theo chiều ngang */
+          justify-content: center;
+          align-items: left;
+          height: 100px;
+          margin: 20px auto;
           img {
             max-width: 100%;
             max-height: 100%;
-            width: auto; /* Giữ nguyên tỷ lệ của hình ảnh */
-            height: auto; /* Giữ nguyên tỷ lệ của hình ảnh */
-            object-fit: contain; /* Đảm bảo hình ảnh được hiển thị hoàn chỉnh */
+            width: auto;
+            height: auto;
+            object-fit: contain;
             border-radius: 400px;
-            padding-right: 150px;
+            padding-left: 150px;
+            padding-right: 200px;
           }
         }
       }
       .header-content {
-        width: 180px;
+        width: 150px;
         height: 100%;
-        text-align: center;
+        text-align: center ;
         padding-top: 30px;
-        padding-left: 10px;
+        padding-left: 0px;
         padding-right: 0px;
         .info {
           display: block;
@@ -85,10 +83,6 @@ header {
               li {
                 padding: 4px 15px;
                 cursor: pointer;
-
-                &:hover {
-                  //background-color: #0d706e;
-                }
               }
             }
           }
@@ -98,7 +92,7 @@ header {
           }
         }
         &:hover {
-          //background-color: #0d706e;
+          background-color: #0d706e;
         }
       }
        
@@ -110,15 +104,15 @@ header {
             position: relative;
             padding-bottom: 10px;
             .user-avatar {
-              width: 40px; /* Điều chỉnh kích thước ảnh người dùng */
-              height: 40px; /* Điều chỉnh kích thước ảnh người dùng */
-              border-radius: 50%; /* Làm cho ảnh người dùng hình tròn */
-              object-fit: cover; /* Đảm bảo ảnh không bị biến dạng */
+              width: 40px; 
+              height: 40px; 
+              border-radius: 50%; 
+              object-fit: cover; 
             }
             
             .default-avatar {
-              font-size: 40px; /* Điều chỉnh kích thước biểu tượng */
-              color: #000; /* Màu sắc biểu tượng */
+              font-size: 40px;
+              color: #000;
             }
             &:hover ul {
               display: block;
@@ -144,16 +138,12 @@ header {
                 padding: 4px 15px;
                 cursor: pointer;
 
-                &:hover {
-                  //background-color: #0d706e;
-                }
               }
             }
             .text-capitalize:hover .user-action {
-              display: block; /* Show the dropdown on hover */
+              display: block; 
             }
           }
-
           .auth-container {
             align-items: center;
             .auth {
