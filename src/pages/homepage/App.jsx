@@ -4,7 +4,7 @@ import Footer from "../../components/footer";
 import { useState } from "react";
 import News from "./components/news";
 import Contact from "./components/contact";
-import RegistrationForm from "./components/rigistrations";
+import RegistrationForm from "../registration";
 import Members from "./components/members";
 
 
