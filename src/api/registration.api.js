@@ -1,4 +1,3 @@
-// registration.api.js
 import { AxiosAuth } from '../services/AxiosService';
 
 const addRegistration = async (formData) => {
@@ -27,7 +26,7 @@ const updatePassedFirstRound = async (registrationId, updateDto) => {
     Object.keys(updateDto).forEach(key => {
       formData.append(key, updateDto[key]);
     });
-    const response = await AxiosAuth.put(`/registrations/${registrationId}/passedFirstRound`, formData);
+    const response = await AxiosAuth.put(`/registrations/passedFirstRound/${registrationId}`, formData);
     return response.data;
   } catch (error) {
     throw new Error(error.response?.data);
@@ -36,7 +35,7 @@ const updatePassedFirstRound = async (registrationId, updateDto) => {
 
 const updatePassedSecondRound = async (registrationId) => {
   try {
-    const response = await AxiosAuth.put(`/registrations/${registrationId}/passedSecondRound`);
+    const response = await AxiosAuth.put(`/registrations/passedSecondRound/${registrationId}`);
     return response.data;
   } catch (error) {
     throw new Error(error.response?.data);

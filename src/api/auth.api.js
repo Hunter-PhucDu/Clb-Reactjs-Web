@@ -18,15 +18,6 @@ const loginUser = async (credentials) => {
   }
 };
 
-const signup = async (userData) => {
-  try {
-    const response = await Axios.post('/auth/sign-up', userData);
-    return response.data;
-  } catch (error) {
-    throw new Error(error.response?.data);
-  }
-};
-
 const logout = async () => {
   try {
     const response = await Axios.post('/auth/log-out');
@@ -48,7 +39,6 @@ const refreshToken = async (refreshTokenData) => {
 const authAPI = {
   loginAdmin,
   loginUser,
-  signup,
   logout,
   refreshToken,
 };

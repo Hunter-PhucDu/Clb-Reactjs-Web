@@ -1,13 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import App from "../pages/homepage/App";
-import SignUp from "../pages/signUp";
 import Account from "../pages/account";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Login from "../pages/login";
 import { useSelector } from "react-redux";
-import TestApiPost from "../pages/testApiPost";
-import TestApiGet from "../pages/testApiGet";
+import AdminManagement from "../pages/adminManagement";
+import LoginAdmin from "../pages/homepage/components/loginAdmin";
+
 
 const Routers = () => {
   let auth = useSelector((state) => state.auth);
@@ -21,20 +20,10 @@ const Routers = () => {
       <ToastContainer />
       <Routes>
         <Route
-          path="/auth/sign-in"
+          path="admin/login"
           element={
             !auth.isLoggedIn ? (
-              <Login notify={notify} />
-            ) : (
-              <Navigate replace to={"/"} />
-            )
-          }
-        />
-        <Route
-          path="/auth/sign-up"
-          element={
-            !auth.isLoggedIn ? (
-              <SignUp notify={notify} />
+              <LoginAdmin notify={notify} />
             ) : (
               <Navigate replace to={"/"} />
             )
@@ -52,12 +41,12 @@ const Routers = () => {
           }
         />
         <Route
-          path="/admin/testApiPost"
-          element={<TestApiPost /> }
-        />
-        <Route
-          path="/admin/testApiGet"
-          element={<TestApiGet /> }
+          path="/admin/management"
+          element={
+            auth.account.role === "ADMIN" ? (
+              <AdminManagement />
+            ) : (<Navigate replace to={"/"} />)
+          }
         />
       </Routes>
 

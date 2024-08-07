@@ -7,6 +7,7 @@ const addMember = async (formData) => {
         'Content-Type': 'multipart/form-data'
       }
     });
+    console.log("response: ", response.data);
     return response.data;
   } catch (error) {
     throw new Error(error.response?.data);
@@ -38,6 +39,7 @@ const getMember = async (memberId) => {
 const getMembers = async () => {
   try {
     const response = await AxiosAuth.get('/members/list');
+    console.log(response.data);
     return response.data;
   } catch (error) {
     throw new Error(error.response?.data);

@@ -1,0 +1,119 @@
+body {
+    background-color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .registration-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(13, 76, 25, 0.1);
+    background-color: #ffffff;
+    background-image: linear-gradient(to bottom right, rgb(238, 185, 163),rgb(253, 217, 202),rgb(253, 223, 223),rgb(244, 190, 193),rgb(252, 160, 175));
+    border-radius: 8px;
+  }
+  
+  label {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #110202;
+  }
+  
+  .required {
+    color: #ff0011;
+    margin-left: 3px;
+    font-size: 12px;
+  }
+  
+  input,
+  select,
+  button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  input:focus,
+  select:focus,
+  button:focus {
+    outline: none;
+    border-color: #1f021a;
+    box-shadow: 0 0 5px rgba(96, 127, 160, 0.5);
+  }
+  
+  button {
+    margin-top: 20px;
+    background-color: #9388db;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .error {
+    color: #ff0000;
+    font-size: 0.875em;
+    margin-top: 7px;
+  }
+  
+  .shining-title {
+    font-weight: bold;
+    position: relative;
+    font-size: 2em;
+    color: #333;
+    animation: shine 2s infinite;
+    text-align: center; /* Center the <h2> */
+  }
+  
+  .success-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .success-message {
+    background-color: #e0ffe0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .success-message h3 {
+    color: #28a745;
+    margin-bottom: 10px;
+  }
+  
+  .success-message p {
+    color: #705858;
+  }
+  
+  .success-message a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .back-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
