@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import authAPI from "../../api/auth.api";
-
+import userServiceAPI from "../../api/user.api";
 export const onSignIn = createAsyncThunk(
   "auth/signIn",
   async (credentials, thunkAPI) => {
@@ -27,7 +27,7 @@ export const onSignUp = createAsyncThunk(
   "auth/signUp",
   async (account, thunkAPI) => {
     try {
-      const response = await authAPI.signUp(account);
+      const response = await  userServiceAPI.signUp(account);
       return response.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.response.data);

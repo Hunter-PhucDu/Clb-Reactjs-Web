@@ -1,5 +1,14 @@
 import { AxiosAuth } from '../services/AxiosService';
 
+const signUp = async (userData) => {
+  try {
+    const response = await AxiosAuth.post('/users', userData);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data);
+  }
+};
+
 const getUser = async () => {
   try {
     const response = await AxiosAuth.get('/users');
@@ -59,6 +68,7 @@ const deleteUser = async (userId) => {
 };
 
 const userServiceAPI = {
+  signUp,
   getUser,
   updateUser,
   changePassword,
