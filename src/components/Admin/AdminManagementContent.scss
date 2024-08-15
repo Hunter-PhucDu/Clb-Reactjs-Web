@@ -1,0 +1,182 @@
+.admin-management-content {
+  height: 90vh;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.button-add-admin,
+.button-forgot-password {
+  border: none;
+  padding: 10px 20px;
+  margin-right: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button-add-admin {
+  background-color: #0e9e4f;
+  color: #fff;
+
+  &:hover {
+    background-color: #15bb84;
+    transform: scale(1.05); // Tăng kích thước khi hover
+  }
+}
+
+.button-forgot-password {
+  background-color: #15bb84;
+  color: #fff;
+
+  &:hover {
+    background-color: #79ca91;
+    transform: scale(1.05); // Tăng kích thước khi hover
+  }
+}
+
+.admin-summary {
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #555;
+}
+
+.admin-list-container {
+  max-height: 700px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.admin-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-list-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border: 1px solid #0e9e4f;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  
+}
+
+.admin-info {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+}
+
+.admin-stt {
+  font-weight: bold;
+  margin-right: 20px;
+  font-size: 25px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.forgot-password-button,
+.delete-button {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.forgot-password-button {
+  background-color: #15bb84;
+  color: #fff;
+
+  &:hover {
+    background-color: #79ca91;
+    transform: scale(1.05); // Tăng kích thước khi hover
+  }
+}
+
+.delete-button {
+  background-color: #c82333;
+  color: #fff;
+
+  &:hover {
+    background-color: #f44336;
+    transform: scale(1.05); // Tăng kích thước khi hover
+  }
+}
+
+.popup-form,
+.delete-confirmation-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.popup-form-content,
+.delete-confirmation-content {
+  padding: 20px;
+}
+
+.popup-form h2,
+.delete-confirmation-content p {
+  margin-bottom: 15px;
+}
+
+.submit-button,
+.close-buttons {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    opacity: 0.9;
+    transform: scale(1.05); // Tăng kích thước khi hover
+  }
+}
+
+.submit-button {
+  background-color: #4caf50;
+  color: white;
+
+  &:hover {
+    background-color: #45a049;
+  }
+}
+
+.close-buttons {
+  background-color: #f44336;
+  color: white;
+
+  &:hover {
+    background-color: #d32f2f;
+  }
+}

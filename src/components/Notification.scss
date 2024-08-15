@@ -1,0 +1,44 @@
+// src/components/Notification.scss
+.notification {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    font-family: Arial, sans-serif;
+  }
+  
+  .notification.fade-out {
+    opacity: 0;
+  }
+  
+  .notification.success {
+    background: linear-gradient(135deg, #5e5fbb, #4515b6);
+    box-shadow: 0 4px 8px rgba(129, 207, 129, 0.616);
+  }
+  
+  .notification.error {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
+  }
+  
+  .close-button {
+    margin-left: 15px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .close-button:hover {
+    color: #ddd;
+  }
+  
