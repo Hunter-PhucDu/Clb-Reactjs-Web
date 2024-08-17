@@ -1,5 +1,4 @@
-import BasePostEditor
- from "../../components/base/basePostNew";
+import BasePostEditor from "../../components/base/BasePostNew";
 const News = ({ notify }) => {
   return (
     <div className="new-container">
