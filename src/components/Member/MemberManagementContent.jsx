@@ -304,9 +304,11 @@ const MemberManagementContent = () => {
 
 
       {showAddMemberForm && (
-        <div className="popup-form">
-          <form onSubmit={handleSubmit}>
-          <div>
+        <>
+          <div className="overlay" onClick={handleCloseAddMemberForm}></div>
+          <div className="popup-form">
+            <form onSubmit={handleSubmit}>
+              <div>
                 <label>Avatar:</label>
                 <input
                   type="file"
@@ -326,7 +328,7 @@ const MemberManagementContent = () => {
                 />
               </div>
               <div>
-              <label>Lớp:</label>
+                <label>Lớp:</label>
                 <input
                   type="text"
                   name="class"
@@ -354,7 +356,7 @@ const MemberManagementContent = () => {
                 />
               </div>
               <div>
-              <label>Giới tính</label>
+                <label>Giới tính:</label>
                 <select name="sex" value={formData.sex} onChange={handleChange}>
                   <option value="">Chọn giới tính</option>
                   <option value="male">Nam</option>
@@ -388,19 +390,23 @@ const MemberManagementContent = () => {
                   onChange={handleChange}
                   required
                 >
-                  {committees.map(committee => (
+                  {committees.map((committee) => (
                     <option key={committee} value={committee}>
                       {committee}
                     </option>
                   ))}
                 </select>
               </div>
-            <button className ="deletes-button" type="submit">{selectedMember ? 'Lưu' : 'Thêm'}</button>
-            <button className ="cancel-button"  type="button" onClick={handleCloseAddMemberForm}>Hủy</button>
-          </form>
-        </div>
+              <button className="deletes-button" type="submit">
+                {selectedMember ? 'Lưu' : 'Thêm'}
+              </button>
+              <button className="cancel-button" type="button" onClick={handleCloseAddMemberForm}>
+                Hủy
+              </button>
+            </form>
+          </div>
+        </>
       )}
-
 
       {showDeleteConfirm && (
         <>

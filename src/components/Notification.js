@@ -1,4 +1,4 @@
-// src/components/Notification.js
+// thông báo 
 import React, { useEffect, useState } from 'react';
 import './Notification.scss';
 

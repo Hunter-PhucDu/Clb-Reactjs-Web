@@ -1,9 +1,11 @@
 .user-management-content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    height: 95vh;
-    overflow: hidden; /* Ngăn không cho phần tử cuộn */
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 95vh;
+      overflow: hidden;
+      padding: 20px;
+      padding-left: 50px;
   
     .search-container {
       margin-bottom: 20px;

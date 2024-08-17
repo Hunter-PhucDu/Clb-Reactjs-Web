@@ -1,18 +1,38 @@
 import React, { useState, useRef, useEffect } from 'react';
-import './index.scss'; // Đảm bảo rằng đường dẫn tới SCSS là chính xác
+import { useNavigate } from 'react-router-dom';
+import './index.scss';
 import AdminManagementContent from '../../components/Admin/AdminManagementContent';
 import MemberManagementContent from '../../components/Member/MemberManagementContent';
 import UserManagementContent from '../../components/User/UserManagementContent';
+import RegistrationManagement from '../../components/Registration/RegistrationManagement';
+
+const HomeIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    className="home-icon"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M3 12l9-9 9 9M4 12v8a1 1 0 001 1h5v-5h4v5h5a1 1 0 001-1v-8"
+    />
+  </svg>
+);
 
 const AdminManagement = () => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
   const [activeContent, setActiveContent] = useState('');
   const sidebarRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleMouseMove = (e) => {
     if (sidebarRef.current) {
       const sidebarRect = sidebarRef.current.getBoundingClientRect();
-      const isNearSidebar = e.clientX < sidebarRect.left + 260;
+      const isNearSidebar = e.clientX < sidebarRect.left + 300;
       setIsSidebarVisible(isNearSidebar);
     }
   };
@@ -27,6 +47,10 @@ const AdminManagement = () => {
 
   const handleButtonClick = (content) => {
     setActiveContent(content);
+  };
+
+  const handleHomeClick = () => {
+    navigate('/');
   };
 
   useEffect(() => {
@@ -48,6 +72,11 @@ const AdminManagement = () => {
         <div className="sidebar-content">
           <h2>Menu</h2>
           <ul>
+            <li>
+              <button onClick={handleHomeClick} className="home-button">
+                <HomeIcon /> Trang Chủ
+              </button>
+            </li>
             <li><button onClick={() => handleButtonClick('Quản lý quản trị viên')}>Quản lý quản trị viên</button></li>
             <li><button onClick={() => handleButtonClick('Quản lý người dùng')}>Quản lý người dùng</button></li>
             <li><button onClick={() => handleButtonClick('Quản lý thành viên')}>Quản lý thành viên</button></li>
@@ -60,7 +89,8 @@ const AdminManagement = () => {
         {activeContent === 'Quản lý quản trị viên' && <AdminManagementContent />}
         {activeContent === 'Quản lý thành viên' && <MemberManagementContent />} 
         {activeContent === 'Quản lý người dùng' && <UserManagementContent />} 
-        
+        {activeContent === 'Quản lý đơn đăng ký' && <RegistrationManagement />} 
+        {!activeContent && <h1>Xin chào đây là trang quản lý của admin</h1>} 
       </main>
     </div>
   );

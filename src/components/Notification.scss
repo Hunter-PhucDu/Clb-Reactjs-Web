@@ -1,44 +1,57 @@
-// src/components/Notification.scss
 .notification {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    padding: 15px;
-    border-radius: 5px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    z-index: 1000;
-    opacity: 1;
-    transition: opacity 0.5s ease;
-    font-family: Arial, sans-serif;
-  }
-  
-  .notification.fade-out {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  display: flex;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transform: translateX(0);
+
+  &.fade-out {
     opacity: 0;
+    transform: translateX(20px); // Đẩy nhẹ thông báo ra khỏi màn hình
   }
-  
-  .notification.success {
-    background: linear-gradient(135deg, #5e5fbb, #4515b6);
-    box-shadow: 0 4px 8px rgba(129, 207, 129, 0.616);
+
+  &.success {
+    border-color: #28a745;
+    background-color: #d4edda;
+    color: #155724;
   }
-  
-  .notification.error {
-    background: linear-gradient(135deg, #f44336, #d32f2f);
-    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
+
+  &.error {
+    border-color: #dc3545;
+    background-color: #f8d7da;
+    color: #721c24;
   }
-  
+
+  &.info {
+    border-color: #17a2b8;
+    background-color: #d1ecf1;
+    color: #0c5460;
+  }
+
   .close-button {
-    margin-left: 15px;
-    background: none;
+    background: transparent;
     border: none;
-    color: #fff;
-    font-size: 16px;
+    color: inherit;
+    font-size: 1.2em;
     cursor: pointer;
+    margin-left: auto;
     transition: color 0.3s ease;
+
+    &:hover {
+      color: #888;
+    }
   }
-  
-  .close-button:hover {
-    color: #ddd;
+
+  span {
+    flex: 1;
   }
-  
+}

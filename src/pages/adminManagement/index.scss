@@ -218,3 +218,24 @@ z-index: 1001;
   margin-bottom: 20px;
 }
 }
+
+/* index.scss */
+.sidebar-content {
+  // Các kiểu khác
+  .home-button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    
+    .home-icon {
+      margin-right: 8px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
