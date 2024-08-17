@@ -1,0 +1,40 @@
+.base-input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  
+    .base-input-label {
+      margin-bottom: 5px;
+      font-size: 14px;
+      color: #333;
+  
+      .required {
+        color: red;
+        margin-left: 5px;
+      }
+    }
+  
+    .base-input-field {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      transition: border-color 0.2s ease;
+  
+      &:focus {
+        border-color: #007bff;
+        outline: none;
+      }
+  
+      &.input-error {
+        border-color: red;
+      }
+    }
+  
+    .base-input-error {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  }
+  

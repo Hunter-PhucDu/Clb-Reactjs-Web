@@ -1,0 +1,113 @@
+#head {
+  animation: head 0.5s alternate 3s linear infinite;
+  transform-origin: center;
+}
+
+.box {
+  position: relative;
+
+  .path1 {
+    position: absolute;
+    bottom: -60%;
+    left: -10%;
+    z-index: -1;
+  }
+}
+
+@keyframes head {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+  100% {
+    transform: rotate(5deg) translateY(4px);
+  }
+}
+
+#hand {
+  animation: hand 0.5s alternate 0s linear infinite;
+  transform-origin: bottom;
+}
+
+@keyframes hand {
+  0% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  100% {
+    transform: rotate(3deg) translateY(-2px);
+  }
+}
+
+@keyframes head {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+  100% {
+    transform: rotate(5deg) translateY(4px);
+  }
+}
+
+#largeSpin,
+#smallSpin {
+  animation: spin 2s forwards 0s linear infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+  background-origin: content-box;
+}
+
+.readMore {
+  margin: 30px 0;
+  padding: 20px 35px;
+  color: white;
+  font-weight: bolder;
+  font-size: 16px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(155, 5, 155);
+}
+
+.readMore:hover {
+  background-color: rgb(226, 40, 226);
+  box-shadow: 2px 2px 25px rgb(235, 158, 235);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#graph {
+  animation: fade 2s forwards 1s linear infinite;
+  transform-origin: left;
+}
+
+@keyframes fade {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .box {
+    margin: 10px 0;
+  }
+
+  .girlImage {
+    overflow: hidden;
+
+    svg {
+      transform: scale(0.6) translateX(-35%);
+    }
+  }
+
+  .laptopImage {
+    display: none;
+  }
+}

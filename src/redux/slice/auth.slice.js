@@ -37,12 +37,11 @@ const authSlice = createSlice({
         state.loading = "idle";
         state.isLoggedIn = true;
         state.account = action.payload;
-        window.location.href = "/";
+
       })
       .addCase(onSignInUser.rejected, (state, action) => {
         state.isLoggedIn = false;
         state.loading = "idle";
-        // window.location.href = "/auth/sign-in";
       })
 
       // SIGN IN ADMIN
@@ -55,12 +54,11 @@ const authSlice = createSlice({
         state.loading = "idle";
         state.isLoggedIn = true;
         state.account = action.payload;
-        window.location.href = "/";
+
       })
       .addCase(onSignInAdmin.rejected, (state, action) => {
         state.isLoggedIn = false;
         state.loading = "idle";
-        // window.location.href = "/auth/sign-in";
       })
 
       // SIGN UP
@@ -69,7 +67,6 @@ const authSlice = createSlice({
       })
       .addCase(onSignUp.fulfilled, (state, action) => {
         state.loading = "idle";
-        window.location.href = "/auth/sign-in";
       })
       .addCase(onSignUp.rejected, (state, action) => {
         state.loading = "idle";

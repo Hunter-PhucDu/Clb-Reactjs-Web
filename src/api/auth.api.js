@@ -18,14 +18,25 @@ const loginUser = async (credentials) => {
   }
 };
 
-const logout = async () => {
+const generateOtp = async (otpData) => {
   try {
-    const response = await Axios.post('/auth/log-out');
+    const response = await Axios.post('/auth/generate-otp', otpData);
     return response.data;
   } catch (error) {
     throw new Error(error.response?.data);
   }
 };
+
+const forgotPassword = async (forgotPasswordData) => {
+  try {
+    const response = await Axios.post('/auth/forgot-password', forgotPasswordData);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data);
+  }
+};
+
+
 
 const refreshToken = async (refreshTokenData) => {
   try {
@@ -39,7 +50,8 @@ const refreshToken = async (refreshTokenData) => {
 const authAPI = {
   loginAdmin,
   loginUser,
-  logout,
+  generateOtp,
+  forgotPassword,
   refreshToken,
 };
 

@@ -1,18 +1,25 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import App from "../pages/homepage/App";
+import App from "../App";
 import Account from "../pages/account";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
-import AdminManagement from "../pages/adminManagement";
-import LoginAdmin from "../pages/homepage/components/loginAdmin";
+import Management from "../pages/management";
+import LoginAdmin from "../pages/loginAdmin";
+import ForgotPassword from "../layouts/forgotPassword";
+import LoginUser from "../pages/loginUser";
+import SignUp from "../pages/signUp";
 
 
 const Routers = () => {
   let auth = useSelector((state) => state.auth);
 
   const notify = (msg, type = "SUCCESS") => {
-    toast.success(msg, { type: toast.TYPE[type] });
+    if (type === "ERROR") {
+      toast.error(msg);
+    } else {
+      toast.success(msg);
+    }
   };
 
   return (
@@ -20,7 +27,7 @@ const Routers = () => {
       <ToastContainer />
       <Routes>
         <Route
-          path="admin/login"
+          path="/admin/sign-in"
           element={
             !auth.isLoggedIn ? (
               <LoginAdmin notify={notify} />
@@ -29,28 +36,62 @@ const Routers = () => {
             )
           }
         />
+        
+        <Route
+          path="/sign-in"
+          element={
+            !auth.isLoggedIn ? (
+              <LoginUser notify={notify} />
+            ) : (
+              <Navigate replace to={"/"} />
+            )
+          }
+        />
+
+        <Route
+          path="/signup"
+          element={
+            !auth.isLoggedIn ? (
+              <SignUp notify={notify} />
+            ) : (
+              <Navigate replace to={"/"} />
+            )
+          }
+        />
+
+        <Route
+          path="/forgotpassword"
+          element={
+            !auth.isLoggedIn ? (
+              <ForgotPassword notify={notify} />
+            ) : (
+              <Navigate replace to={"/"} />
+            )
+          }
+        />
+
         <Route path="/" element={<App notify={notify} />} />
+
         <Route
           path="/account/:field"
           element={
             auth.isLoggedIn ? (
               <Account />
             ) : (
-              <Navigate replace to={"/auth/sign-in"} />
+              <Navigate replace to={"/sign-in"} />
             )
           }
         />
+
         <Route
-          path="/admin/management"
+          path="/management"
           element={
             auth.account.role === "ADMIN" ? (
-              <AdminManagement />
+              <Management />
             ) : (<Navigate replace to={"/"} />)
           }
         />
       </Routes>
-
-
     </BrowserRouter>
   );
 };

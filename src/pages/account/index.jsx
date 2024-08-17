@@ -1,5 +1,5 @@
-import Header from "../../components/header";
-import Footer from "../../components/footer";
+import Header from "../../layouts/header";
+import Footer from "../../layouts/footer";
 import { useSelector } from "react-redux";
 import "./index.scss";
 import { useParams } from "react-router";

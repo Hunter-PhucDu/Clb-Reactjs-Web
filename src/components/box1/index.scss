@@ -1,0 +1,79 @@
+#woman {
+  animation-name: up-down;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-delay: 0s;
+  animation-direction: alternate;
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(-60px);
+  }
+  100% {
+    transform: translateY(30px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .box {
+    flex-wrap: wrap;
+    padding: 10px !important;
+
+    .info {
+      padding: 20px 10px !important;
+    }
+
+    .path2 {
+      display: none;
+    }
+
+    .path1 {
+      display: none;
+    }
+  }
+}
+
+.box {
+  display: flex;
+  justify-content: space-around;
+  margin: 100px auto;
+  padding: 10px 20px;
+  max-width: 1200px;
+
+  position: relative;
+  .girlImage {
+    width: 500px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  .path2 {
+    position: absolute;
+    right: 0;
+    bottom: -10%;
+    width: 300px;
+    height: 300px;
+  }
+
+  .info {
+    
+    padding: 20px 70px;
+
+    h1 {
+      font-size: 3rem;
+      color: rgb(158, 12, 158);
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    li {
+      font-size: 16px;
+      list-style-type: none;
+      color: rgb(54, 54, 54);
+    }
+  }
+}

@@ -33,9 +33,27 @@ const updatePassedFirstRound = async (registrationId, updateDto) => {
   }
 };
 
+const unpassedFirstRound = async () => {
+  try {
+    const response = await AxiosAuth.get('/registrations/unpassedFirstRound');
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data);
+  }
+};
+
 const updatePassedSecondRound = async (registrationId) => {
   try {
     const response = await AxiosAuth.put(`/registrations/passedSecondRound/${registrationId}`);
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data);
+  }
+};
+
+const unpassedSecondRound = async () => {
+  try {
+    const response = await AxiosAuth.get('/registrations/unpassedFirstRound');
     return response.data;
   } catch (error) {
     throw new Error(error.response?.data);
@@ -76,7 +94,9 @@ const registrationServiceAPI = {
   addRegistration,
   getRegistration,
   updatePassedFirstRound,
+  unpassedFirstRound,
   updatePassedSecondRound,
+  unpassedSecondRound,
   getRegistrations,
   searchRegistrations,
   deleteRegistration,

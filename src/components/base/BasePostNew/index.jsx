@@ -27,7 +27,7 @@ const BasePostEditor = () => {
   };
 
   return (
-    <div>
+    <div className='new-container'>
       <h1>Tạo bài viết mới</h1>
       <input
         type="text"

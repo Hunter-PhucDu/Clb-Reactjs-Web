@@ -1,0 +1,41 @@
+.fogotpw-container {
+  display: flex;
+  padding-top: 10%;
+  height: 80vh;
+  background-color: #f1f0ec;
+  align-items: center;
+  width: 100%;
+  min-width: 1000px;
+
+  .fogotpw-content {
+    display: flex;
+    height: 80%;
+    padding-bottom: 2rem;
+    justify-content: center;
+
+    .image-forgotpw {
+      padding-right: 40px;
+
+      img {
+        width: 400px;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      text-align: right;
+    }
+
+    .forgotpw-form {
+      .card-body-otp {
+        width: 500px;
+        min-width: 500px;
+
+        .sending-otp {
+          color: #444;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}

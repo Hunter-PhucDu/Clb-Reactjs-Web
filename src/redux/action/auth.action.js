@@ -2,9 +2,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { jwtDecode } from "jwt-decode";
 import authAPI from "../../api/auth.api";
 import userServiceAPI from "../../api/user.api";
+import { persistor } from "../store";
 
 export const onSignInUser = createAsyncThunk(
-  "auth/user/signIn",
+  "auth/user/sign-in",
   async (credentials, thunkAPI) => {
     try {
       const { data } = await authAPI.loginUser(credentials);
@@ -28,7 +29,7 @@ export const onSignInUser = createAsyncThunk(
 );
 
 export const onSignInAdmin = createAsyncThunk(
-  "auth/admin/signin",
+  "auth/admin/sign-in",
   async (credentials, thunkAPI) => {
     try {
       const { data } = await authAPI.loginAdmin(credentials);
@@ -51,7 +52,7 @@ export const onSignInAdmin = createAsyncThunk(
 );
 
 export const onSignUp = createAsyncThunk(
-  "auth/signUp",
+  "auth/signup",
   async (account, thunkAPI) => {
     try {
       const response = await userServiceAPI.signUp(account);
@@ -62,10 +63,10 @@ export const onSignUp = createAsyncThunk(
   }
 );
 
-export const onLogOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
+export const onLogOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
-    const response = await authAPI.logout();
-    return response.data;
+    await persistor.purge();
+    return {};
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response.data);
   }
