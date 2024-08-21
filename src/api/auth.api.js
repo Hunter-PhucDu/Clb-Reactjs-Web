@@ -4,6 +4,7 @@ const loginAdmin = async (credentials) => {
   try {
     const response = await Axios.post('/auth/admin/sign-in', credentials);
     return response.data;
+    console.log(response.data);
   } catch (error) {
     throw new Error(error.response?.data);
   }

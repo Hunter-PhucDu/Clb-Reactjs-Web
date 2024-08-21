@@ -1,0 +1,65 @@
+.new-container {
+    h1 {
+      margin-top: 50px; // Đẩy tiêu đề xuống dưới
+    }
+  
+    input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+  
+    button {
+      display: inline-block;
+      padding: 10px 20px; // Padding để làm rộng button
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      width: calc(100% + 20px); // Tăng chiều rộng thêm 20px
+      height: calc(100% + 40px);
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  
+    .status-message {
+      color: #d9534f; // Màu sắc thông báo lỗi
+      font-size: 0.875rem;
+    }
+  }
+  .jodit .jodit-toolbar {
+    display: flex;
+    flex-wrap: wrap; // Đảm bảo các nút không bị tràn ra ngoài
+    align-items: center; // Căn giữa các nút theo chiều dọc
+    gap: 10px; // Khoảng cách giữa các nút
+    padding: 0 10px; // Padding bên trái và bên phải
+    box-sizing: border-box; // Bao gồm padding trong tổng chiều rộng
+  }
+  
+  .jodit .jodit-toolbar .jodit-toolbar-btn {
+    flex: 1 1 auto; // Nút có thể co dãn và lấp đầy không gian
+    display: flex;
+    align-items: center;
+    justify-content: center; // Căn giữa nội dung của nút
+    padding: 5px; // Padding bên trong nút
+    box-sizing: border-box; // Bao gồm padding trong tổng chiều rộng
+  }
+  
+  .jodit .jodit-toolbar .jodit-toolbar-btn .jodit-icon {
+    font-size: 16px; // Kích thước biểu tượng
+  }
+  
+  .jodit .jodit-toolbar .jodit-toolbar-btn:hover {
+    background-color: #f0f0f0; // Màu nền khi hover
+  }
+  

@@ -1,85 +1,78 @@
-import React, { useState } from 'react';
-import { Editor } from '@tinymce/tinymce-react';
+import React, { useState, useCallback, useMemo } from 'react';
+import JoditEditor from 'jodit-react';
+import postServiceAPI from '../../../api/post.api';
+import './index.scss'; // Import file SCSS
 
 const BasePostEditor = () => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [errMsg, setErrMsg] = useState({});
+  const [statusMessage, setStatusMessage] = useState('');
+  const [postData, setPostData] = useState({
+    title: "",
+    richTextContent: "",
+    author: "CLB Lập Trình UTB"
+  });
 
-  const handleEditorChange = (content) => {
-    setContent(content);
-  };
+  // Hàm cập nhật nội dung từ editor
+  const handleEditorChange = useCallback((content) => {
+    setPostData((prevData) => ({
+      ...prevData,
+      richTextContent: content,
+    }));
+    setErrMsg((prevErr) => ({ ...prevErr, richTextContent: '' }));
+  }, []);
 
+  // Hàm xử lý nhập liệu của form
+  const handleInputChange = useCallback((e) => {
+    const { name, value } = e.target;
+    setPostData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+    setErrMsg((prevErr) => ({ ...prevErr, [name]: '' }));
+  }, []);
+
+  // Hàm gửi dữ liệu
   const handleSubmit = async () => {
-    const response = await fetch('/posts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        title: title,
-        content: content,
-        author: 'admin'
-      })
-    });
-    if (response.ok) {
-      // Handle success
+    try {
+      console.log("Dữ liệu gửi đi: ", postData);
+      const response = await postServiceAPI.addPost(postData);
+      console.log("Dữ liệu trả về: ", response);
+      setStatusMessage('Bài viết đã được lưu thành công!');
+    } catch (error) {
+      console.error("Lỗi khi lưu bài viết:", error);
+      setStatusMessage('Có lỗi xảy ra khi lưu bài viết.');
     }
   };
+
+  // Cấu hình Jodit Editor
+  const editorConfig = useMemo(() => ({
+    readonly: false,
+    toolbar: true,
+    uploader: {
+      insertImageAsBase64URI: true, // hỗ trợ tải ảnh trực tiếp dưới dạng Base64
+    },
+    height: 500,
+  }), []);
 
   return (
     <div className='new-container'>
       <h1>Tạo bài viết mới</h1>
       <input
         type="text"
+        name="title"
         placeholder="Tiêu đề"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        value={postData.title}
+        onChange={handleInputChange}
       />
-      <Editor
-        apiKey="your-tinymce-api-key"
-        value={content}
-        init={{
-          height: 500,
-          menubar: false,
-          plugins: [
-            'advlist autolink lists link image charmap print preview anchor',
-            'searchreplace visualblocks code fullscreen',
-            'insertdatetime media table paste code help wordcount'
-          ],
-          toolbar:
-            'undo redo | formatselect | bold italic backcolor | \
-            alignleft aligncenter alignright alignjustify | \
-            bullist numlist outdent indent | removeformat | help',
-          image_title: true,
-          automatic_uploads: true,
-          file_picker_types: 'image',
-          file_picker_callback: function (cb, value, meta) {
-            let input = document.createElement('input');
-            input.setAttribute('type', 'file');
-            input.setAttribute('accept', 'image/*');
-            input.onchange = async function () {
-              let file = this.files[0];
-              let formData = new FormData();
-              formData.append('file', file);
-
-              let response = await fetch('/upload', {
-                method: 'POST',
-                body: formData
-              });
-              let data = await response.json();
-              cb(data.filePath, { title: file.name });
-            };
-            input.click();
-          }
-        }}
-        onEditorChange={handleEditorChange}
+      <JoditEditor
+        value={postData.richTextContent}
+        onChange={handleEditorChange}
+        config={editorConfig}
       />
       <button onClick={handleSubmit}>Lưu bài viết</button>
+      {statusMessage && <p className="status-message">{statusMessage}</p>}
     </div>
   );
 };
 
 export default BasePostEditor;
-
-
-//wysiwyg
