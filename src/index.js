@@ -1,25 +1,16 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import React from "react";
-import ReactDOM from "react-dom/client"; // Cập nhật import
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import "./assets/styles/index.scss";
-import { persistor, store } from "./redux/store";
-import reportWebVitals from "./reportWebVitals";
-import Routers from "./routes";
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
+import 'core-js'
 
-const container = document.getElementById("root");
-const root = ReactDOM.createRoot(container);
+import App from './App'
+import store, { persistor } from './redux/store'
 
-root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <Routers />
-      </PersistGate>
-    </Provider>
-  </React.StrictMode>
-);
-
-
-reportWebVitals();
+createRoot(document.getElementById('root')).render(
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
+  </Provider>
+)

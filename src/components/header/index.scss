@@ -1,0 +1,185 @@
+header {
+    position: fixed;
+    z-index: 1000; 
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #343a40 !important;
+    color: #f3f3f4;
+    min-width: 900px;
+  
+    .header-container {
+      font-size: 14pt;
+      position: relative;
+      font-family: 'Times New Roman', Times, serif;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 auto;
+      padding: 0 20px;
+  
+      img {
+        width: 80px;
+        height: 80px;
+      }
+  
+      a {
+        color: #f3f3f4;
+        font-weight: bolder;
+        text-decoration: none;
+        text-wrap: nowrap;
+  
+        &:hover {
+          color: #f11703;
+        }
+      }
+  
+      .header-body {
+        display: flex;
+        width: 100%;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+  
+        .header-content {
+          padding-left: 10px;
+          padding-right: 10px;
+          display: flex;
+          align-items: center;
+  
+          .info {
+            display: inline-block;
+            position: relative;
+  
+            span {
+              .sub-info {
+                list-style-type: none;
+                padding: 0;
+                margin-top: 25px;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 220px;
+                text-align: left;
+                display: none;
+                border: 1px solid gray;
+                box-shadow: 0 3px 3px 2px #80808024;
+                z-index: 100;
+                background-color:  #343a40;
+  
+                li {
+                  padding: 4px 15px;
+                  cursor: pointer;
+  
+                  &:hover {
+                    background-color: #f8f9fa;;
+                    color: #444;
+                  }
+                }
+              }
+            }
+  
+            &:hover .sub-info {
+              display: block;
+              color: black;
+            }
+  
+            &:hover::after {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: -10px;
+              right: -10px;
+              bottom: -25px;
+              z-index: 50;
+            }
+          }
+  
+          .news {
+            width: auto;
+            border: none;
+          }
+  
+  
+          .account {
+            display: flex;
+            align-items: center;
+            min-width: auto;
+            margin-left: 50px;
+            
+  
+            .auth-login {
+              display: flex;
+              align-items: center;
+              background-color: #343a40;
+  
+              .text-capitalize {
+                display: flex;
+                align-items: center;
+              }
+  
+              .user-avatar {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-right: 10px;
+              }
+  
+              .settings-icon {
+                padding-left: 10px;
+                font-size: 24px;
+                cursor: pointer;
+                color: white;
+                transition: color 0.3s;
+              }
+  
+              .settings-panel {
+                list-style-type: none;
+                padding: 10px;
+                position: fixed;
+                right: 5px;
+                top: 80px;
+                width: 200px;
+                text-align: left;
+                background-color:  #343a40;
+                border: 1px solid gray;
+                box-shadow: 0 3px 3px 2px #80808024;
+                display: none;
+                z-index: 100;
+                text-wrap: nowrap;
+  
+                li {
+                  padding: 10px;
+                  cursor: pointer;
+  
+                  &:hover {
+                    font-weight: bold;
+                    background-color: #f8f9fa;;
+                    color: #444;
+                  }
+                }
+              }
+  
+              .settings-open {
+                display: block;
+              }
+            }
+  
+            .auth-content {
+              background-color: #343a40 !important;
+  
+              .auth {
+                display: flex;
+                margin-right: 15px;
+  
+                a {
+                  margin-right: 10px;
+                }
+              }
+            }
+          }
+  
+        }
+      }
+    }
+  }

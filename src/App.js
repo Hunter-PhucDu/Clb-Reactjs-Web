@@ -1,13 +1,37 @@
-import './App.css';
-import Homepage from './pages/homepage';
+import React, { Suspense } from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import Routers from './routes'
+import { toast, ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
-function App({ notify }) {
+import { CSpinner } from '@coreui/react'
+import './scss/style.scss'
+import './css/common.css'
+
+const App = () => {
+
+  const notify = (msg, type = "SUCCESS") => {
+    if (type === "ERROR") {
+      toast.error(msg)
+    } else {
+      toast.success(msg)
+    }
+  }
+
   return (
-    <div className="App">
-      <Homepage notify={notify} />
-    </div>
-  );
+    <BrowserRouter>
+      <Suspense
+        fallback={
+          <div className="pt-3 text-center">
+            <CSpinner color="primary" variant="grow" />
+          </div>
+        }
+      >
+        <ToastContainer />
+        <Routers notify={notify} />
+      </Suspense>
+    </BrowserRouter>
+  )
 }
 
-export default App;
-
+export default App
