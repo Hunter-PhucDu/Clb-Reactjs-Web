@@ -76,6 +76,8 @@ const MemberManagementContent = () => {
     setShowAddMemberForm(true);
   };
 
+  
+
   const handleCloseAddMemberForm = () => {
     setShowAddMemberForm(false);
   };
@@ -104,31 +106,38 @@ const MemberManagementContent = () => {
     if (formData.phone) formDataToSend.append('phone', formData.phone);
     formDataToSend.append('email', formData.email);
     if (formData.sex) formDataToSend.append('sex', formData.sex);
-    if (formData.dateOfBirth) formDataToSend.append('dateOfBirth', formData.dateOfBirth);
-    if (formData.joinedDate) formDataToSend.append('joinedDate', formData.joinedDate);
+    if (formData.dateOfBirth) formDataToSend.append('dateOfBirth', formatDateForDateOfBirth(formData.dateOfBirth));
+    if (formData.joinedDate) formDataToSend.append('joinedDate', formatDateForJoinedDate(formData.joinedDate));
     if (formData.committee) formDataToSend.append('committee', formData.committee);
 
     try {
-      if (selectedMember) {
-        // Cập nhật thông tin thành viên
-        await memberServiceAPI.updateMember(selectedMember._id, formDataToSend);
-        setNotification({ message: 'Cập nhật thành công!', type: 'success' });
-      } else {
-        // Thêm thành viên mới
-        await memberServiceAPI.addMember(formDataToSend);
-        setNotification({ message: 'Thêm thành viên thành công!', type: 'success' });
-      }
-      handleCloseAddMemberForm();
-      // Cập nhật danh sách thành viên
-      const response = await memberServiceAPI.getMembers();
-      const updatedMembers = response.data; // Giả sử rằng `response.data` chứa dữ liệu trả về từ server
-      setMembers(Array.isArray(updatedMembers) ? updatedMembers : []);
+        if (selectedMember) {
+            // Cập nhật thông tin thành viên
+            await memberServiceAPI.updateMember(selectedMember._id, formDataToSend);
+            setNotification({ message: 'Cập nhật thành công!', type: 'success' });
+        } else {
+            // Thêm thành viên mới
+            await memberServiceAPI.addMember(formDataToSend);
+            setNotification({ message: 'Thêm thành viên thành công!', type: 'success' });
+        }
+        handleCloseAddMemberForm();
+        // Cập nhật danh sách thành viên
+        const response = await memberServiceAPI.getMembers();
+        const updatedMembers = response.data; 
+        setMembers(Array.isArray(updatedMembers) ? updatedMembers : []);
     } catch (error) {
-      console.error('Error saving member:', error);
-      setNotification({ message: 'Đã xảy ra lỗi!', type: 'error' });
+        if (error.response) {
+            console.error('Error saving member:', error.response.data);
+            setNotification({ message: `Đã xảy ra lỗi: ${error.response.data.message || 'Không rõ'}`, type: 'error' });
+        } else {
+            console.error('Error saving member:', error.message);
+            setNotification({ message: `Đã xảy ra lỗi: ${error.message}`, type: 'error' });
+        }
     }
-  };
+};
 
+
+  
   const handleEditMember = (member) => {
     setSelectedMember(member);
     setFormData({
@@ -168,6 +177,26 @@ const MemberManagementContent = () => {
     setMemberToDelete(null);
   };
 
+
+  const formatDateForDateOfBirth = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, '0'); // Ngày (01-31)
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Tháng (01-12)
+    const year = date.getFullYear(); // Năm (yyyy)
+
+    return `${day}/${month}/${year}`;
+};
+
+const formatDateForJoinedDate = (dateString) => {
+    const date = new Date(dateString);
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Tháng (01-12)
+    const day = date.getDate().toString().padStart(2, '0'); // Ngày (01-31)
+    const year = date.getFullYear(); // Năm (yyyy)
+
+    return `${month}/${day}/${year}`;
+};
+
+  
   const formatDateForInput = (dateString) => {
     if (!dateString) return '';
     const date = new Date(dateString);
@@ -178,12 +207,14 @@ const MemberManagementContent = () => {
   };
 
   const formatDate = (isoDateString) => {
+    if (!isoDateString) return '';
     const date = new Date(isoDateString);
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     return `${day}/${month}/${year}`;
   };
+  
 
   const committees = [
     'All',
@@ -276,7 +307,7 @@ const MemberManagementContent = () => {
           {searchResults.map((member, index) => (
             <li className="member-list-item" key={member._id}>
               <div className="member-info">
-                <img className="member-avatar" src={member.avatar || 'default-avatar.png'} alt="Avatar" />
+                <img className="member-avatar" src={'http://'+member.avatar} alt="Avatar" />
                 <div className="member-details">
                   <span className="member-stt">{index + 1}</span>
                   <span className="member-name">{member.fullName}</span>
@@ -371,6 +402,7 @@ const MemberManagementContent = () => {
                   name="dateOfBirth"
                   value={formatDateForInput(formData.dateOfBirth)}
                   onChange={handleChange}
+                  
                 />
               </div>
               <div>
