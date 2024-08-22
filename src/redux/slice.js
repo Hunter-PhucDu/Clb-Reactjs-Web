@@ -17,6 +17,9 @@ const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
+        reqRefreshToken: (state, action) => {
+            state.account.accessToken = action.payload;
+          },
         updateAccount: (state, action) => {
             state.account.username = action.payload
         },
@@ -82,6 +85,6 @@ const authSlice = createSlice({
     },
 })
 
-export const { updateAccount } = authSlice.actions
+export const {reqRefreshToken, updateAccount } = authSlice.actions
 
 export default authSlice.reducer

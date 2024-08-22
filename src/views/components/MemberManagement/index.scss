@@ -1,0 +1,285 @@
+.member-management-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 95vh;
+    overflow: hidden;
+    padding: 20px;
+    padding-left: 50px;
+  
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #dae6d4;
+      margin-bottom: 5px; 
+      padding-bottom: 15px;
+  
+      .tab-button {
+        background: #29a559;
+        border: none;
+        padding: 10px 15px; 
+        margin-right: 10px; 
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 4px;
+        transition: background 0.3s ease;
+  
+        &.active {
+          background: #d41b1b;
+          font-weight: bold;
+        }
+  
+        &:hover {
+          background: #d41b1b; 
+          transform: scale(1.05); 
+        }
+      }
+    }
+  
+    .tab-content {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding-bottom: 1px;
+  
+  
+      .member-list {
+        list-style-type: none;
+        padding: 0;
+  
+        .member-list-item {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+          border: 1px solid #e2af24;
+          padding: 10px;
+          border-radius: 5px;
+          background-color: #f9f9f9;
+  
+          .member-info {
+            display: flex;
+            align-items: center;
+  
+            .member-avatar {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              margin-right: 10px;
+              object-fit: cover;
+            }
+  
+            .member-details {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+  
+              .member-stt {
+                font-weight: bold;
+                margin-right: 5px;
+              }
+            }
+          }
+  
+          .actions {
+            display: flex;
+            align-items: center;
+  
+            .edit-button,
+            .delete-button {
+              margin-left: 10px;
+              cursor: pointer;
+              padding: 5px 10px;
+              border-radius: 5px;
+              border: none;
+              color: #fff;
+              transition: background 0.3s ease;
+  
+              &.edit-button {
+                background: #29a559;
+  
+                &:hover {
+                  background: #1c8a40;
+                  transform: scale(1.05);
+                }
+              }
+  
+              &.delete-button {
+                background: #dc3545;
+  
+                &:hover {
+                  background: #c82333;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    .add-member-button-container {
+      position: sticky;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px;
+      background-color: #fff;
+      border-top: 1px solid #ddd; 
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+  
+    .export-button,
+    .add-member-button {
+      border: none;
+      padding: 0.5rem 1rem; 
+      border-radius: 0.25rem; 
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-left: 10px;
+  
+      &:hover {
+        transform: scale(1.05);
+      }
+  
+      &.export-button {
+        background-color: #2dd8e4;
+        color: #fff;
+  
+        &:hover {
+          background-color: #086970;
+        }
+      }
+  
+      &.add-member-button {
+        background-color: #1bc052;
+        color: #fff;
+  
+        &:hover {
+          background-color: #08742c;
+        }
+      }
+    }
+  
+    .search-input {
+      width: 200px; 
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition: width 0.6s ease; 
+      display: block; 
+      margin: 0 auto; 
+      margin-bottom: 15px;
+  
+      &:focus {
+        width: 400px; 
+        border-color: #4e42ac;
+      }
+  
+      &::placeholder {
+        color: #aaa;
+      }
+    }
+  
+    .member-count {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 1rem 0;
+      color: #333; 
+      display: flex;
+      align-items: center;
+      padding: 1px;
+    }
+  
+    .popup-form {
+      margin: 0 auto; 
+      position: fixed; 
+      top: 50%; 
+      left: 50%; 
+      transform: translate(-50%, -50%); 
+      z-index: 1000;
+  
+      form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-height: 95vh;
+        overflow-y: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 600px;
+        margin: auto;
+  
+        div {
+          flex: 1 1 calc(50% - 10px);
+          margin-bottom: 10px;
+  
+          &:nth-child(1),
+          &:nth-child(2) {
+            flex: 1 1 100%;
+          }
+  
+          label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+          }
+  
+          input,
+          select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #bfdff5;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  
+    .deletes-button {
+      background-color: #17cf55; 
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-right: 10px;
+      margin-top: 35px;
+      margin-bottom: 15px;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #118a3a; 
+        transform: scale(1.05); 
+      }
+  
+      &:active {
+        background-color: #0c7730; 
+        transform: scale(1.05); 
+      }
+    }
+  
+    .cancel-button {
+      background-color: #9e9e9e; 
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-right: 10px;
+      margin-top: 35px;
+      margin-bottom: 15px;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #757575; 
+        transform: scale(1.05); 
+      }
+  
+      &:active {
+        background-color: #616161; 
+        transform: scale(1.05); 
+      }
+    }
+  }

@@ -1,0 +1,96 @@
+.user-management-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 95vh;
+    overflow: hidden;
+    padding: 20px;
+    padding-left: 50px;
+
+  .search-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+
+    .search-input {
+      width: 200px; /* Chiều rộng ban đầu */
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition: width 0.6s ease; /* Hiệu ứng chuyển đổi chiều rộng */
+      display: block; /* Đảm bảo input là khối */
+      margin: 0 auto; /* Căn giữa theo chiều ngang */
+
+      &:focus {
+        width: 400px; /* Chiều rộng khi click vào */
+        border-color: #4e42ac; /* Đổi màu viền khi focus */
+      }
+
+      &::placeholder {
+        color: #aaa; /* Màu placeholder */
+      }
+    }
+  }
+
+  .user-count {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 1rem 0; /* Khoảng cách trên và dưới */
+    color: #333; /* Màu chữ */
+    display: flex;
+    align-items: center;
+  }
+
+  .tab-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-bottom: 60px; /* Đệm để không bị che bởi nút */
+
+    .user-list {
+      list-style-type: none;
+      padding: 0;
+
+      .user-list-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        border: 1px solid #e2af24;
+        padding: 10px;
+        border-radius: 5px;
+
+        .user-info {
+          display: flex;
+
+          .user-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .user-stt {
+              font-weight: bold;
+              margin-right: 5px;
+            }
+          }
+        }
+
+        .actions {
+          display: flex;
+          align-items: center;
+
+          .delete-button {
+            margin-left: 10px;
+            cursor: pointer;
+            background: #d41b1b;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }
+
+ 
+
+}

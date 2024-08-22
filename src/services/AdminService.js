@@ -7,7 +7,7 @@ class AdminService extends BaseService {
 
     async addAdmin(adminData) {
         try {
-            const response = await this.post('/admin', adminData)
+            const response = await this.post('/admins', adminData)
             return response.data
         } catch (error) {
             throw new Error(error.response?.data)
@@ -17,6 +17,7 @@ class AdminService extends BaseService {
     async getAdmins() {
         try {
             const response = await this.get('/admins')
+            console.log(response.data)
             return response.data
         } catch (error) {
             throw new Error(error.response?.data)

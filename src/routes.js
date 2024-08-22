@@ -6,7 +6,7 @@ const HomePage = lazy(() => import('./views/pages/homepage'))
 const LoginUser = lazy(() => import('./views/pages/loginUser'))
 const LoginAdmin = lazy(() => import('./views/pages/loginAdmin'))
 const Register = lazy(() => import('./views/pages/register'))
-const ForgotPassword = lazy(() => import('./views/layouts/forgotPassword'))
+const ForgotPassword = lazy(() => import('./views/pages/forgotPassword'))
 const Management = lazy(() => import('./views/pages/management'))
 const Page404 = lazy(() => import('./views/pages/page404'))
 const Page500 = lazy(() => import('./views/pages/page500'))
@@ -23,13 +23,13 @@ const PrivateRoute = ({ element }) => {
 // eslint-disable-next-line react/prop-types
 const PrivateAdminManagementRoute = ({ element }) => {
   const auth = useSelector((state) => state.auth)
-  return auth.role === "ADMIN" ? (element) : (<Navigate replace to="/" />)
+  return auth.account.role === "ADMIN" ? element : <Navigate replace to="/" />
 }
 
 // eslint-disable-next-line react/prop-types
 const PublicRoute = ({ element }) => {
   const auth = useSelector((state) => state.auth)
-  return auth.isLoggedIn ? (<Navigate to="/" />) : (element)
+  return auth.account.isLoggedIn ? (<Navigate to="/" />) : (element)
 }
 
 const Routers = ({ notify }) => {
@@ -43,7 +43,7 @@ const Routers = ({ notify }) => {
       <Route path="/forgotpassword" element={<PublicRoute element={<ForgotPassword />} />} />
       <Route path="/registration" element={<RegistrationForm />} />
       <Route path="/news" element={<News />} />
-      <Route path="/management" element={<PrivateAdminManagementRoute element={<Management />} />} />
+      <Route path="/management" element={<Management />} />
       <Route path="/500" element={<Page500 />} />
       <Route path="*" element={<Page404 />} />
     </Routes>

@@ -1,0 +1,174 @@
+.admin-management-content {
+    position: relative;
+    flex-direction: column;
+    height: 95vh;
+    overflow: hidden;
+    padding: 20px;
+    padding-left: 50px;
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+  
+    .popup-form,
+    .delete-confirmation-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 500px;
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+  
+    .popup-form-content,
+    .delete-confirmation-content {
+      padding: 20px;
+    }
+  
+    .popup-form h2,
+    .delete-confirmation-content p {
+      margin-bottom: 15px;
+    }
+  
+    .submit-button,
+    .close-buttons {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0 5px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+  
+      &:hover {
+        opacity: 0.9;
+        transform: scale(1.05); // Tăng kích thước khi hover
+      }
+    }
+  
+    .submit-button {
+      background-color: #4caf50;
+      color: white;
+  
+      &:hover {
+        background-color: #45a049;
+      }
+    }
+  
+    .close-buttons {
+      background-color: #f44336;
+      color: white;
+  
+      &:hover {
+        background-color: #d32f2f;
+      }
+    }
+  
+    .admin-summary {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 1rem 0; 
+      color: #333; 
+      display: flex;
+      align-items: center;
+      padding: 5px;
+    }
+  
+    .admin-list-container {
+      overflow-y: auto;
+      max-height: 400px;
+  
+      .admin-list {
+        list-style-type: none;
+        padding: 30;
+  
+        .admin-list-item {
+          display: flex;
+          justify-content: space-between;
+          padding: 15px;
+          border-bottom: 1px solid #ddd;
+  
+          .admin-info {
+            display: flex;
+            align-items: center;
+          }
+  
+          .admin-stt {
+            margin-right: 15px;
+            font-weight: bold;
+          }
+  
+          .actions {
+            display: flex;
+            align-items: center;
+  
+            button {
+              margin-left: 10px;
+              padding: 8px;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+              font-size: 14px;
+              transition: background 0.3s;
+  
+              &.forgot-password-button {
+                background: #2196F3;
+                color: #fff;
+  
+                &:hover {
+                  background: #1e88e5;
+                }
+              }
+  
+              &.delete-button {
+                background: #f44336;
+                color: #fff;
+  
+                &:hover {
+                  background: #e53935;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    .button-add-admin,
+    .button-forgot-password {
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-right: 10px;
+      transition: background 0.3s;
+  
+      &.button-add-admin {
+        background: #4CAF50;
+        color: #fff;
+  
+        &:hover {
+          background: #45a049;
+        }
+      }
+  
+      &.button-forgot-password {
+        background: #2196F3;
+        color: #fff;
+  
+        &:hover {
+          background: #1e88e5;
+        }
+      }
+    }
+  }

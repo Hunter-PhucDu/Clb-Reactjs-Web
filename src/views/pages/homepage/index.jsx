@@ -1,11 +1,15 @@
-import React from "react"
+import React, { useEffect }  from "react"
 import "./index.scss"
 import MainImg from "../../../assets/images/main.png"
-import HeroText from "../../layouts/HeroText"
-import Containers from "../../layouts/containers"
+import HeroText from "../../components/HeroText"
+import Containers from "../../components/containers"
 import DefaultLayout from "../../../layout/DefaultLayout"
 
 const Homepage = () => {
+  useEffect(() => {
+    document.title = "Clb Lập trình"
+  }, [])
+
 
   return (
     <DefaultLayout>
