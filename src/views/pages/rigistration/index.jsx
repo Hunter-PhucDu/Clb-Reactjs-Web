@@ -19,6 +19,7 @@ import RegistrationService from '../../../services/RegistrationService'
 import RegistrationSettingService from '../../../services/RegistrationSettingService'
 import DefaultLayout from '../../../layout/DefaultLayout'
 import './index.scss'
+import registrationImg from '../../../assets/images/anh1.jpg'
 
 const RegistrationForm = ({ notify }) => {
   const [errMsg, setErrMsg] = useState({})
@@ -37,23 +38,15 @@ const RegistrationForm = ({ notify }) => {
     phone: '',
     email: '',
     gender: '',
-    dateOfBirth: '',
+    dateOfBirth: '', // Format: YYYY-MM-DD
     questions: []
   })
-
 
   const handleDobChange = (e) => {
     const value = e.target.value // format YYYY-MM-DD
     setRegistrationData(prevData => ({
       ...prevData,
       dateOfBirth: value
-    }))
-    // Convert to DD/MM/YYYY format
-    const [year, month, day] = value.split('-')
-    const formattedDate = `${day}/${month}/${year}`
-    setRegistrationData(prevData => ({
-      ...prevData,
-      dateOfBirth: formattedDate
     }))
   }
 
@@ -144,7 +137,6 @@ const RegistrationForm = ({ notify }) => {
       errors.dateOfBirth = 'Nhập ngày sinh.'
     }
 
-
     return errors
   }
 
@@ -157,8 +149,8 @@ const RegistrationForm = ({ notify }) => {
     }
 
     try {
-      const [day, month, year] = registrationData.dateOfBirth.split('/')
-      const formattedDate = `${year}-${month}-${day}`
+      // Ensure the date is in YYYY-MM-DD format for submission
+      const formattedDate = registrationData.dateOfBirth
       const dataToSubmit = { ...registrationData, dateOfBirth: formattedDate }
 
       await RegistrationService.addRegistration(dataToSubmit)
@@ -178,9 +170,15 @@ const RegistrationForm = ({ notify }) => {
       <div className="registration-container">
         {registrationSetting.isRegistrationOpen ? (
           !isSubmitted ? (
+            
             <div className="registration-form bg-body-tertiary min-vh-100 d-flex flex-row align-items-center">
+              <div className="intro half-screen">
+              <img src={registrationImg} alt="Illustrated svg" />
+                <h2>Chào mừng các bạn đến với</h2>
+                <h2>Câu lạc bộ lập trình</h2>
+              </div>
               <CContainer>
-                <CRow className="justify-content-center">
+                <CRow className="justify-content-center half-screen">
                   <CCol md={9} lg={7} xl={6}>
                     <CCard className="mx-4">
                       <CCardBody className="p-4">
@@ -263,7 +261,7 @@ const RegistrationForm = ({ notify }) => {
                               name="dateOfBirth"
                               placeholder="Ngày sinh"
                               autoComplete="dateOfBirth"
-                              value={registrationData.dateOfBirth ? new Date(registrationData.dateOfBirth.split('/').reverse().join('-')).toISOString().split('T')[0] : ''}
+                              value={registrationData.dateOfBirth}
                               onChange={handleDobChange}
                             />
                           </CInputGroup>

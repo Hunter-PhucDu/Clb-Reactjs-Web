@@ -1,0 +1,145 @@
+.login-container {
+    padding-bottom: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; // Ensures footer is centered
+  
+    .login-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 10%;
+  
+      .image-login {
+        padding-right: 40px;
+  
+        img {
+          width: 400px;
+        }
+      }
+    }
+  
+    .card-login {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 600px;
+      min-width: 600px;
+      overflow-x: auto;
+      padding: 20px;
+      transition: background-color 0.3s, color 0.3s;
+  
+      .card-body {
+        .form-login {
+          display: flex;
+          flex-direction: column; // Align children vertically
+          background: linear-gradient(to right, white, pink);
+          border-radius: 30px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          padding: 10px;
+          
+          // Center the button within form-login
+          .btn-login {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px; // Adjust as needed for spacing
+            
+            button {
+              padding: 10px 30px;
+              border-radius: 30px;
+              font-weight: bold;
+              cursor: pointer;
+            }
+          }
+  
+          .password-container {
+            position: relative;
+  
+            .form-control {
+              padding-right: 40px;
+            }
+  
+            .password-icon {
+              position: absolute;
+              top: 40%;
+              right: 10px;
+              cursor: pointer;
+              font-size: 18px;
+              color: #999;
+  
+              &:hover {
+                color: #333;
+              }
+            }
+          }
+  
+          .form-check {
+            display: flex;
+            align-items: center;
+            margin: 10px 0; // Adjust spacing as needed
+  
+            .form-check-input {
+              margin-right: 10px; // Spacing between checkbox and label
+            }
+  
+            label {
+              margin: 0; // Ensure label is aligned with checkbox
+              padding-top: 0;
+            }
+          }
+  
+          .login-options {
+            margin: 20px 0;
+  
+            .text-left {
+              text-align: left;
+            }
+  
+            .text-right {
+              text-align: right;
+              float: right;
+            }
+  
+            .no-underline {
+              text-decoration: none;
+            }
+          }
+        }
+  
+        .form-outline {
+          margin-bottom: 10rem;
+  
+          label {
+            display: block;
+            margin-bottom: 0.5rem;
+          }
+  
+          .form-control {
+            &.form-control-lg {
+              width: 100%;
+              padding: 0.5rem;
+              font-size: 1.125rem;
+            }
+          }
+  
+          .message {
+            color: red;
+            font-size: 12px;
+            padding-top: 5px;
+            text-align: left;
+          }
+        }
+      }
+    }
+  
+    .footer {
+      text-align: center;
+      width: 100%;
+      padding: 20px;
+      background-color: #f1f0ec;
+      position: relative; // Ensure it's properly aligned within flex container
+    }
+  }
+  

@@ -1,0 +1,48 @@
+.registration-form {
+    margin-left: 300px; // Vị trí ngang của form
+    margin-top: 100px;  // Vị trí dọc của form
+  
+    // Tăng kích thước form
+    .card {
+      width: 600px;   // Tăng chiều rộng của form (có thể điều chỉnh theo ý thích)
+      padding: 30px;  // Tăng padding cho form để tạo không gian rộng hơn
+      left: -250px;
+    }
+  
+    h1,
+    p {
+      text-align: center; // Căn giữa tiêu đề và đoạn văn
+    }
+  }
+  
+  .footer {
+    display: flex;
+    justify-content: center; // Căn giữa footer
+    align-items: center;
+    text-align: center;
+  }
+  
+  .small-button {
+    width: 150px;  // Thu gọn chiều rộng của nút
+    padding: 10px 20px;  // Điều chỉnh padding
+    font-size: 14px; // Điều chỉnh kích thước font chữ
+  }
+  
+  .intro {
+    text-align: center; // Căn giữa nội dung của intro
+    margin-left: -50px; // Dịch phần giới thiệu sang phải
+  
+    img {
+      display: block;
+      width: 90%; // Giảm kích thước ảnh xuống còn 80% chiều rộng của phần tử chứa
+      max-width: 600px; // Đặt kích thước tối đa của ảnh để tránh bị quá lớn
+      margin: 0 auto; // Căn giữa ảnh
+    }
+  
+    h2 {
+      margin: 5px 0; // Tạo khoảng cách 5px giữa các tiêu đề h2
+      padding: 0;
+      text-align: center; // Căn giữa h2
+    }
+  }
+  

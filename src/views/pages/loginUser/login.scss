@@ -4,23 +4,12 @@
   align-items: center;
   justify-content: center;
 
-  // .image-login {
-  //   padding-right: 40px;
-
-  //   img {
-  //     width: 400px;
-  //   }
-  // }
-
-  // .register-container {
-  //   min-width: 800px;
-  //   width: 800px;
-  // }
   .login-content {
     display: flex;
     align-items: center;
     justify-content: center;
     padding-top: 10%;
+    
     .image-login {
       padding-right: 40px;
 
@@ -30,11 +19,12 @@
     }
 
     .login-container {
-      min-width: 900px;
-      width: 1000px;
+      min-width: 1000px; // Increased min-width for a wider form
+      width: 1200px;     // Adjusted width for a wider form
     }
-
   }
+}
+
 
   // .login-content {
   //   display: flex;
@@ -154,4 +144,3 @@
   // }
 
 
-}
