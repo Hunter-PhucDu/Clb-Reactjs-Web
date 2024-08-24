@@ -13,25 +13,20 @@ const Box2 = () => {
       ...timing,
       delay: 0,
       iterations: 1,
-      
+
     },
   });
   return (
-    <div className="box">
+    <div className="box2">
       <div className="info">
-        <h1>Thực hành</h1>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem, animi! Cumque fugit non, suscipit officia, amet nostrum, mollitia rem ea vel itaque laboriosam modi nihil eligendi ex. Quo, eum quae!
-        </p>
-
-        <button className="readMore">Read more</button>
+        <h1>Học tập - Rèn luyện</h1>
       </div>
       <div
         ref={ref}
         onMouseEnter={() => getAnimation().play()}
         className="laptopImage"
         dangerouslySetInnerHTML={{
-          __html: `<svg width="504" height="501" viewBox="0 0 504 501" fill="none" xmlns="http://www.w3.org/2000/svg">
+          __html: `<svg viewBox="0 0 504 501" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="3 1" clip-path="url(#clip0)">
           <path id="Vector" opacity="0.18" d="M36.4645 393.294C36.4645 393.294 -17.5097 326.728 -1.32114 256.272C14.8675 185.816 58.4898 185.757 129.521 119.736C200.553 53.7147 219.238 -12.3506 330.123 -3.34836C441.008 5.65385 514.536 232.197 497.099 293.71C479.662 355.222 464.697 401.736 464.697 401.736L36.4645 393.294Z" fill="#F607FB"/>
           <path id="Vector_2" d="M200.173 77.1007H14.1696C9.70262 77.1007 6.08142 81.461 6.08142 86.8396V239.803C6.08142 245.182 9.70262 249.542 14.1696 249.542H200.173C204.64 249.542 208.261 245.182 208.261 239.803V86.8396C208.261 81.461 204.64 77.1007 200.173 77.1007Z" fill="white"/>
@@ -156,8 +151,13 @@ const Box2 = () => {
           </svg>`,
         }}
       />
-
-      <img className="path1" src={path} alt="path" />
+      <div className="info">
+        <p>
+          Tạo ra một môi trường để học tập và rèn luyện. Giao lưu, kết nối các sở thích và tài năng đa dạng.
+          Tạo nơi cho sự sáng tạo, nâng cao kiến thức và tinh thần ham học hỏi từ đó thúc đẩy
+          sự phát triển cá nhân trong một môi trường giàu tri thức và tiềm năng.
+        </p>
+      </div>
     </div>
   );
 };

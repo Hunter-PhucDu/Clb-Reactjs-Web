@@ -9,17 +9,20 @@ const Box3 = () => {
     timing: {
       ...timing,
       delay: 0,
-      
+
     },
   });
   return (
-    <div className="box">
+    <div className="box3">
+      <div className="info">
+        <h1>Nâng cao kỹ năng</h1>
+      </div>
       <div
         ref={ref}
         onMouseOver={() => getAnimation().play()}
-        className="girlImage"
+        className="girlImage2"
         dangerouslySetInnerHTML={{
-          __html: `<svg width="503" height="500" viewBox="0 0 503 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+          __html: `<svg viewBox="0 0 503 500" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="2 1" clip-path="url(#clip0)">
           <path id="Vector" opacity="0.18" d="M251.108 1.86891C185.689 10.8075 123.908 51.5606 92.3235 111.686C83.2648 128.987 76.4557 147.502 66.6572 164.414C55.6659 183.101 40.9908 199.39 29.4258 217.719C-5.64647 272.845 -8.72643 346.363 16.7587 406.145C35.9632 451.227 72.6208 477.483 120.496 477.669C144.064 477.747 166.137 469.182 189.252 468.014C221.153 466.457 254.656 476.969 285.304 484.724C319.546 493.382 354.483 501.853 389.691 499.627C424.899 497.4 460.998 483.011 481.999 453.797C502.789 424.894 505.854 386.041 500.977 350.411C496.101 314.782 484.098 280.6 477.681 245.266C470.283 204.389 470.132 161.751 456.091 122.789C434.562 63.0686 380.481 18.6716 320.301 4.76539C297.583 -0.404745 274.157 -1.38537 251.108 1.86891V1.86891Z" fill="#EE28FF"/>
           <path id="Vector_2" d="M351.735 82.3471V400.259C351.731 407.619 348.895 414.676 343.851 419.882C338.807 425.088 331.966 428.016 324.83 428.024H191.411C184.271 428.024 177.424 425.099 172.376 419.892C167.327 414.685 164.491 407.622 164.491 400.259V82.3471C164.489 78.7009 165.183 75.0899 166.534 71.7204C167.885 68.351 169.867 65.289 172.365 62.7092C174.863 60.1295 177.83 58.0826 181.095 56.6854C184.36 55.2881 187.86 54.5679 191.395 54.5659H324.83C328.365 54.5679 331.866 55.2881 335.131 56.6854C338.396 58.0826 341.363 60.1295 343.861 62.7092C346.359 65.289 348.34 68.351 349.691 71.7204C351.042 75.0899 351.737 78.7009 351.735 82.3471V82.3471Z" fill="#AB10F4"/>
@@ -82,13 +85,12 @@ const Box3 = () => {
           </svg>`,
         }}
       />
-
       <div className="info">
-        <h1>Tư duy</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio itaque illum sint quia rerum excepturi consequatur modi voluptatum ut tempora quidem cupiditate provident magni, nobis, magnam eligendi consequuntur natus mollitia?.
+          Phát triển và nâng cao kỹ năng cá nhân, bao gồm cả kỹ năng giao tiếp, làm việc nhóm,
+          quản lý thời gian và phát triển các kỹ năng mềm khác.
+          Có cơ hội trải nghiệm học tập và làm việc hiệu quả trong môi trường đa dạng và hỗ trợ.
         </p>
-        <button className="readMore">Read more</button>
       </div>
     </div>
   );

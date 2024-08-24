@@ -11,18 +11,21 @@ const Box1 = () => {
     keyframes,
     timing: {
       ...timing,
-     
+
     },
   });
 
   return (
     <div className="box">
+      <div className="info">
+        <h1>Kết nối - Chia sẻ</h1>
+      </div>
       <div
         ref={ref}
         onMouseOver={() => getAnimation().play()}
-        className="girlImage"
+        className="girlImage1"
         dangerouslySetInnerHTML={{
-          __html: `<svg width="501" height="491" viewBox="0 0 501 491" fill="none" xmlns="http://www.w3.org/2000/svg">
+          __html: `<svg viewBox="0 0 501 491" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="girl">
           <path id="Vector" opacity="0.18" d="M85.4095 476.329C67.2657 472.652 50.1855 463.31 35.7929 449.19C18.8652 432.743 0.438085 410.58 1.00456 383.072C1.60436 353.918 10.4347 325.834 19.9982 299.56C32.9272 264.074 50.9211 226.656 46.156 187.141C41.391 147.626 47.7888 100.34 64.6498 66.8692C91.3075 14.1551 137.959 1.36716 184.609 0.133602C215.432 -0.647652 247.155 1.61388 275.246 17.2801C304.769 33.7275 328.561 64.1553 358.551 78.259C378.544 87.5519 400.404 89.4022 419.964 99.8463C444.589 113.045 463.582 139.197 475.878 168.638C488.174 198.079 494.439 230.768 499.204 263.211C507.001 318.063 488.474 386.567 461.783 431.468C443.989 461.32 414.199 495.901 383.576 488.664C227.662 452.151 257.618 510.827 85.4095 476.329Z" fill="#CA35E2"/>
           <g id="1 1">
@@ -149,21 +152,11 @@ const Box1 = () => {
       />
 
       <div className="info">
-        <h1>Tìm hiểu - nghiên cứu</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis non illo neque placeat officia veritatis nesciunt, impedit, esse nulla perferendis nobis quisquam vel iste voluptatem nam rem deleniti, voluptates hic?
+          Với mục tiêu tập hợp, kết nối những bạn sinh viên tự nguyện, có niềm đam mê về học tập, lập trình, nghiên cứu. Có mong muốn học tập, chia sẻ kiến thức, kỹ năng, và kinh nghiệm với nhau. Cùng hỗ trợ nhau giải quyết những khó khăn trong quá trình học tập.
         </p>
-        <li>Microcopy</li>
-        <li>Taxonomy & Labeling</li>
-        <li>Chatbots</li>
-        <li>User Research</li>
-        <li>Content Style Guide</li>
-        <li>User Testing</li>
-        <li>Design Principles</li>
-        <li>Prototype</li>
       </div>
 
-      <img className="path2" src={path1} alt="path2" />
     </div>
   );
 };

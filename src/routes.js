@@ -41,7 +41,7 @@ const Routers = ({ notify }) => {
       <Route path="/admin/sign-in" element={<PublicRoute element={<LoginAdmin />} />} />
       <Route path="/register" element={<PublicRoute element={<Register notify={notify} />} />} />
       <Route path="/forgotpassword" element={<PublicRoute element={<ForgotPassword />} />} />
-      <Route path="/registration" element={<RegistrationForm />} />
+      <Route path="/registration" element={<RegistrationForm notify={notify}/>} />
       <Route path="/news" element={<News />} />
       <Route path="/management" element={<Management />} />
       <Route path="/500" element={<Page500 />} />

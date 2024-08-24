@@ -13,14 +13,14 @@
     color: #ecf0f1;
     box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
-    transform: translateX(-100%); /* Sidebar ẩn ra khỏi màn hình */
+    transform: translateX(-100%);
     z-index: 1000;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
 
     &.visible {
-      transform: translateX(0); /* Sidebar hiện trên màn hình */
+      transform: translateX(0);
       box-shadow: 8px 0 16px rgba(0, 0, 0, 0.3);
     }
 
@@ -72,10 +72,10 @@
   .main-content {
     margin-left: 0;
     padding: 20px;
-    width: 100%; /* Chiếm toàn bộ chiều rộng khi sidebar đóng */
+    width: 100%;
     overflow-y: auto;
-    transition: width 0.4s ease, transform 0.4s ease; /* Thêm transition cho width và transform */
-    transform: translateX(0); /* Vị trí ban đầu khi sidebar ẩn */
+    transition: width 0.4s ease, transform 0.4s ease;
+    transform: translateX(0); 
 
     h1 {
       font-size: 2em;
@@ -107,13 +107,11 @@
   }
 
   .sidebar.visible ~ .main-content {
-    width: calc(100% - 250px); /* Giảm chiều rộng khi sidebar mở */
-    transform: translateX(250px); /* Di chuyển .main-content sang phải khi sidebar mở */
+    width: calc(100% - 250px);
+    transform: translateX(250px); 
   }
 }
 
-
-/* Định dạng cho modal xác nhận xóa */
 .delete-confirm-modal {
   position: fixed;
   top: 50%;
@@ -125,8 +123,8 @@
   padding: 1rem;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   z-index: 1000;
-  width: 90%; /* Chiều rộng modal */
-  max-width: 400px; /* Chiều rộng tối đa */
+  width: 90%;
+  max-width: 400px; 
 }
 
 .delete-confirmation-modal {
@@ -140,8 +138,8 @@
   padding: 1rem;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   z-index: 1000;
-  width: 90%; /* Chiều rộng modal */
-  max-width: 400px; /* Chiều rộng tối đa */
+  width: 90%;
+  max-width: 400px;
 }
 
 .delete-confirmation-content {
@@ -169,7 +167,7 @@
       color: #fff;
       &:hover {
         background-color: #0056b3;
-        transform: scale(1.05); // Tăng kích thước khi hover
+        transform: scale(1.05); 
       }
     }
 
@@ -178,7 +176,7 @@
       color: #fff;
       &:hover {
         background-color: #c82333;
-        transform: scale(1.05); // Tăng kích thước khi hover
+        transform: scale(1.05); 
       }
     }
   }
@@ -219,9 +217,7 @@ z-index: 1001;
 }
 }
 
-/* index.scss */
 .sidebar-content {
-  // Các kiểu khác
   .home-button {
     display: flex;
     align-items: center;

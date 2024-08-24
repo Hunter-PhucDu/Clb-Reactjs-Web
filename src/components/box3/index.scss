@@ -1,7 +1,3 @@
-.girlImage {
-  height: 400px;
-}
-
 #headGirl {
   animation: move 0.5s alternate 1s linear infinite;
   transform-origin: bottom;
@@ -59,5 +55,36 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+
+$width-img3: 200px;
+$height-img3: 191px;
+
+.box3 {
+  justify-content: center;
+  align-items: center; 
+  position: relative;
+
+  .info {
+    h1 {
+      color: rgb(158, 12, 158);
+    }
+    p {
+      text-align: justify; 
+    }
+
+  }
+
+  .girlImage2 {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+  
+
+    svg {
+      width: $width-img3;
+      height: $height-img3;
+    }
   }
 }

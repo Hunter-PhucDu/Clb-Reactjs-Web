@@ -1,0 +1,154 @@
+
+.registration-container {
+    width: 100%;
+
+    .registration-form {
+        padding-top: 5%;
+        padding-bottom: 5%;
+
+        h1 {
+            text-align: center;
+            font-size: 1.5rem; 
+        }
+
+        p {
+            text-align: center;
+        }
+    }
+
+    .success-rigistration {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10% !important;
+        padding-bottom: 20%;
+        text-align: justify;
+
+        .success-body {
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: 10px;
+
+            .success-text {
+                padding-top: 10px;
+                text-align: center;
+                font-size: 16px;
+                font-weight: bolder;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            .back-button {
+                width: 100%;
+            }
+
+
+        }
+
+    }
+
+    .not-open-registration {
+        padding: 2rem;
+        text-align: justify;
+
+        .not-open-body {
+            padding-bottom: 1rem;
+            padding: 1rem;
+
+            .success-text,
+            .notify-not-open {
+                padding-top: 1rem;
+                text-align: center;
+                font-size: 1rem;
+                font-weight: bolder;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            .back-button {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .success-rigistration {
+        padding-bottom: 10% !important;
+    }
+
+    .registration-container {
+        .not-open-registration {
+            padding-bottom: 30rem !important; 
+        }
+    }
+}
+
+@media screen and (max-width: 435px) {
+    .success-rigistration {
+        padding-bottom: 70% !important;
+    }
+
+    .registration-container {
+        .not-open-registration {
+            padding-bottom: 70% !important; 
+        }
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .success-rigistration {
+        padding-bottom: 60% !important;
+    }
+
+    .registration-container {
+        .not-open-registration {
+            padding-bottom: 60% !important; 
+        }
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .registration-container {
+        .not-open-registration {
+            padding-bottom: 30% !important; 
+        }
+    }
+}
+
+@media screen and (max-width: 395px) {
+    .success-rigistration {
+        padding-bottom: 45% !important;
+    }
+
+    .registration-container {
+        .not-open-registration {
+            padding-bottom: 50% !important; 
+        }
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .success-rigistration {
+        padding-bottom: 10% !important;
+    }
+
+    .registration-container {
+        .not-open-registration {
+            padding-bottom: 30% !important; 
+        }
+    }
+}
+
+
+@media screen and (max-width: 370px) {
+    .registration-container {
+        .not-open-registration {
+            padding-bottom: 30% !important; 
+        }
+    }
+}

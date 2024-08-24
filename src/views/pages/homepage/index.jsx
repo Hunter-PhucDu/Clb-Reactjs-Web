@@ -1,4 +1,4 @@
-import React, { useEffect }  from "react"
+import React, { useEffect } from "react"
 import "./index.scss"
 import MainImg from "../../../assets/images/main.png"
 import HeroText from "../../components/HeroText"
@@ -22,10 +22,11 @@ const Homepage = () => {
             </div>
             <HeroText />
           </div>
+          <div className="content-text">Mục tiêu và phương hướng của Câu lạc bộ</div>
           <div className="body-page">
             <Containers />
           </div>
-        </div>      
+        </div>
       </div>
     </DefaultLayout>
   )

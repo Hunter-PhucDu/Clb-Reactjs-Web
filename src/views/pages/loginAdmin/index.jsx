@@ -10,11 +10,8 @@ import "./index.scss"
 import DefaultLayout from '../../../layout/DefaultLayout'
 
 const LoginAdmin = ({ notify }) => {
-  useEffect(() => {
-    document.title = "Đăng nhập quản trị viên" 
-  }, [])
   const navigate = useNavigate()
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn || false)
   const dispatch = useDispatch()
   const [rememberMe, setRememberMe] = useState(localStorage.getItem("rememberMe") === "true")
   const [errMsg, setErrMsg] = useState({})
@@ -23,6 +20,16 @@ const LoginAdmin = ({ notify }) => {
     userName: "",
     password: "",
   })
+
+  useEffect(() => {
+    document.title = "Đăng nhập quản trị viên" 
+  }, [])
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/')
+    }
+  }, [isLoggedIn, navigate])
 
   const onAccountChange = (e) => {
     const { name, value } = e.target

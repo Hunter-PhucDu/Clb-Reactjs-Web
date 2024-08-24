@@ -112,7 +112,7 @@ const Register = ({ notify }) => {
 
   return (
     <DefaultLayout>
-      <div className="register-container bg-body-tertiary min-vh-100 d-flex flex-row align-items-center">
+      <div className="register-container d-flex flex-row align-items-center">
         <CContainer>
           <CRow className="justify-content-center">
             <CCol md={9} lg={7} xl={6}>
