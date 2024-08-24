@@ -1,5 +1,5 @@
 import React from "react"
-import { Navigate } from "react"
+import { Navigate } from 'react-router-dom'
 import "./index.scss"
 
 const HeroText = () => {
