@@ -5,7 +5,20 @@ import { Link } from "react-router-dom"
 import { onSignInAdmin } from "../../../redux/action"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons"
-import LoginImg from "../../../assets/images/main.png"
+import {
+  CContainer,
+  CButton,
+  CCard,
+  CCardBody,
+  CCol,
+  CForm,
+  CFormInput,
+  CInputGroup,
+  CInputGroupText,
+  CRow,
+} from '@coreui/react'
+import CIcon from '@coreui/icons-react'
+import { cilLockLocked, cilUser } from '@coreui/icons'
 import "./index.scss"
 import DefaultLayout from '../../../layout/DefaultLayout'
 
@@ -22,7 +35,7 @@ const LoginAdmin = ({ notify }) => {
   })
 
   useEffect(() => {
-    document.title = "Đăng nhập quản trị viên" 
+    document.title = "Đăng nhập quản trị viên"
   }, [])
 
   useEffect(() => {
@@ -95,46 +108,51 @@ const LoginAdmin = ({ notify }) => {
 
   return (
     <DefaultLayout>
-      <div className="login-container">
-        <div className="container">
-          <div className="login-content">
-            <div className="image-login">
-              <img src={LoginImg} alt="Illustrated svg" />
-            </div>
-
-            <section className="Login-Form">
-              <div className="card-login" style={{ borderRadius: "5px" }}>
-                <div className="card-body">
-                  <form className="form-login" onSubmit={handleSubmitSignin}>
-                    <h2 className="text-center mb-5">Đăng nhập quản trị viên</h2>
-                    <div className="form-outline mb-3">
-                      <input
-                        type="text"
-                        placeholder="Tên đăng nhập"
-                        className="form-control form-control-lg"
+      <div className="login-admin-container">
+        <CContainer>
+          <CRow className="justify-content-center">
+            <CCol md={9} lg={7} xl={6}>
+              <CCard className="mx-4">
+                <CCardBody>
+                  <CForm onSubmit={handleSubmitSignin}>
+                    <h1>Đăng nhập</h1>
+                    <p className="text-body-secondary">Đăng nhập tài khoản</p>
+                    <CInputGroup className="mb-3">
+                      <CInputGroupText>
+                        <CIcon icon={cilUser} />
+                      </CInputGroupText>
+                      <CFormInput
                         name="userName"
+                        placeholder="Tên đăng nhập"
+                        autoComplete="userName"
                         value={account.userName}
                         onChange={onAccountChange}
                       />
-                      {errMsg.userName && <p className="message">{errMsg.userName}</p>}
-                    </div>
-
-                    <div className="form-outline mb-3 password-container">
-                      <input
+                    </CInputGroup>
+                    {errMsg.userName && <div className="text-danger mb-3">{errMsg.userName}</div>}
+                    
+                    <CInputGroup className="mb-3">
+                      <CInputGroupText>
+                        <CIcon icon={cilLockLocked} />
+                      </CInputGroupText>
+                      <CFormInput
+                        name="password"
                         type={showPassword ? "text" : "password"}
                         placeholder="Mật khẩu"
-                        className="form-control form-control-lg"
-                        name="password"
+                        autoComplete="new-password"
                         value={account.password}
                         onChange={onAccountChange}
                       />
-                      <FontAwesomeIcon
-                        icon={showPassword ? faEyeSlash : faEye}
-                        className="password-icon"
-                        onClick={() => setShowPassword(!showPassword)}
-                      />
-                      {errMsg.userName && <p className="message">{errMsg.password}</p>}
-                    </div>
+                      <CInputGroupText>
+                        <FontAwesomeIcon
+                          icon={showPassword ? faEyeSlash : faEye}
+                          className="password-icon"
+                          onClick={() => setShowPassword(!showPassword)}
+                        />
+                      </CInputGroupText>
+                    </CInputGroup>
+                    {errMsg.password && <div className="text-danger mb-3">{errMsg.password}</div>}
+
 
                     <div className="form-check mb-3">
                       <input
@@ -148,29 +166,22 @@ const LoginAdmin = ({ notify }) => {
                         Nhớ tài khoản
                       </label>
                     </div>
-
-                    <div className="btn-login">
-                      <button type="submit">
-                        Đăng nhập
-                      </button>
+                    <div className="d-grid">
+                      <CButton color="success" type="submit">Đăng nhập</CButton>
                     </div>
-
-                    <div className="login-options">
-                      <span className="text-left">
-                        <Link to="/forgotpassword" className="no-underline">Quên mật khẩu</Link>
-                      </span>
-                      <span className="text-right">
-                        Chưa có tài khoản? <Link to="/signup" className="no-underline">Đăng ký</Link>
-                      </span>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
-      </div>
-    </DefaultLayout>
+                  </CForm>
+                  <p className="text-center text-muted mt-5 mb-0">
+                    <Link to="/forgotpassword" className="fw-bold text-body" style={{ paddingRight: '10px' }}>
+                      <u>Quên mật khẩu</u>
+                    </Link>
+                  </p>
+                </CCardBody>
+              </CCard>
+            </CCol>
+          </CRow>
+        </CContainer>
+      </div >
+    </DefaultLayout >
   )
 }
 

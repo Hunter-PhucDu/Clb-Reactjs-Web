@@ -23,6 +23,7 @@ const PrivateRoute = ({ element }) => {
 // eslint-disable-next-line react/prop-types
 const PrivateAdminManagementRoute = ({ element }) => {
   const auth = useSelector((state) => state.auth)
+
   return auth.account.role === "ADMIN" ? element : <Navigate replace to="/" />
 }
 
@@ -41,9 +42,9 @@ const Routers = ({ notify }) => {
       <Route path="/admin/sign-in" element={<PublicRoute element={<LoginAdmin />} />} />
       <Route path="/register" element={<PublicRoute element={<Register notify={notify} />} />} />
       <Route path="/forgotpassword" element={<PublicRoute element={<ForgotPassword />} />} />
-      <Route path="/registration" element={<RegistrationForm notify={notify}/>} />
+      <Route path="/registration" element={<RegistrationForm notify={notify} />} />
       <Route path="/news" element={<News />} />
-      <Route path="/management" element={<Management />} />
+      <Route path="/management" element={<PrivateAdminManagementRoute element={<Management />} />} />
       <Route path="/500" element={<Page500 />} />
       <Route path="*" element={<Page404 />} />
     </Routes>

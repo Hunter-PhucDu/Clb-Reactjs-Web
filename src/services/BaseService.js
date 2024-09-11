@@ -5,7 +5,7 @@ import store  from "../redux/store";
 
 export const AxiosAuth = axios.create({
   timeout: 15000,
-  baseURL: process.env.REACT_APP_BACK_API_URL + "/api/v1",
+  baseURL: "https://clblaptrinhutb.id.vn/api/v1",
 });
 
 AxiosAuth.interceptors.request.use(
@@ -13,7 +13,7 @@ AxiosAuth.interceptors.request.use(
     let { auth } = store.getState("auth");
     let { accessToken, refreshToken } = auth.account;
     if (!accessToken) return config;
-
+    
     let date = new Date();
     let decodedAccessToken = jwtDecode(accessToken);
 

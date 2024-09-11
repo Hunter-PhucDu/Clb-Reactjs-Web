@@ -1,35 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import './index.scss';
-import PostService from '../../../services/PostService';
-import Notification from '../Notification';
-import BasePostEditor from '../../base/BasePostEditor';
+import React, { useState, useEffect } from 'react'
+import './index.scss'
+import PostService from '../../../services/PostService'
+import Notification from '../Notification'
+import BasePostEditor from '../../base/BasePostEditor'
 
 const PostManagement = () => {
-  const [posts, setPosts] = useState([]);
-  const [notification, setNotification] = useState({ message: '', type: '' });
-  const [showAddPostForm, setShowAddPostForm] = useState(false);
+  const [posts, setPosts] = useState([])
+  const [notification, setNotification] = useState({ message: '', type: '' })
+  const [showAddPostForm, setShowAddPostForm] = useState(false)
 
   const fetchPosts = async () => {
     try {
-      const response = await PostService.getPosts();
-      console.log("data post: ", response.data);
-      setPosts(response.data);
+      const response = await PostService.getPosts()
+      console.log("data post: ", response.data)
+      setPosts(response.data)
     } catch (error) {
-      console.error('Error fetching posts:', error);
+      console.error('Error fetching posts:', error)
     }
-  };
+  }
 
   const handleOpenAddPostForm = () => {
-    setShowAddPostForm(true);
-  };
+    setShowAddPostForm(true)
+  }
 
   const notify = (message, type) => {
-    setNotification({ message, type });
-  };
+    setNotification({ message, type })
+  }
 
   useEffect(() => {
-    fetchPosts();
-  }, []);
+    fetchPosts()
+  }, [])
 
   return (
     <div className="post-management-content">
@@ -49,7 +49,7 @@ const PostManagement = () => {
         onClose={() => setNotification({ message: '', type: '' })}
       />
     </div>
-  );
-};
+  )
+}
 
-export default PostManagement;
+export default PostManagement

@@ -1,153 +1,154 @@
-import React, { useEffect, useState } from 'react';
-import RegistrationService from '../../../services/RegistrationService';
-import Notification from '../Notification';
-import './index.scss';
+import React, { useEffect, useState } from 'react'
+import RegistrationService from '../../../services/RegistrationService'
+import Notification from '../Notification'
+import './index.scss'
 
 const RegistrationManagement = () => {
-  const [registrations, setRegistrations] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [selectedRegistration, setSelectedRegistration] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [formData, setFormData] = useState({ dateTime: '', address: '' });
-  const [notification, setNotification] = useState({ message: '', type: '' });
-  const [activeTab, setActiveTab] = useState('all');
-  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-  const [registrationToDelete, setRegistrationToDelete] = useState(null);
-
-
+  const [registrations, setRegistrations] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [selectedRegistration, setSelectedRegistration] = useState(null)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [formData, setFormData] = useState({ dateTime: '', address: '' })
+  const [notification, setNotification] = useState({ message: '', type: '' })
+  const [activeTab, setActiveTab] = useState('all')
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
+  const [registrationToDelete, setRegistrationToDelete] = useState(null)
 
   useEffect(() => {
     const fetchRegistrations = async () => {
       try {
-        const data = await RegistrationService.getRegistrations();
-        setRegistrations(data.data);
-        setLoading(false);
+        const data = await RegistrationService.getRegistrations()
+        console.log("registrations: ", data.data)
+        setRegistrations(data.data || []) // Đảm bảo giá trị mặc định là mảng
+        setLoading(false)
       } catch (error) {
-        console.error('Error fetching registrations:', error.message);
-        setLoading(false);
+        console.error('Error fetching registrations:', error.message)
+        setLoading(false)
       }
-    };
+    }
 
-    fetchRegistrations();
-  }, []);
+    fetchRegistrations()
+  }, [])
 
-
-  
   const handleFirstRoundApproval = async () => {
     if (selectedRegistration) {
       const formDataToSend = {
         dateTime: formData.dateTime,
         address: formData.address,
-      };
+      }
 
       try {
-        await RegistrationService.updatePassedFirstRound(selectedRegistration._id, formDataToSend);
+        await RegistrationService.updatePassedFirstRound(selectedRegistration._id, formDataToSend)
         setRegistrations(prevRegistrations =>
           prevRegistrations.map(registration =>
             registration._id === selectedRegistration._id
               ? { ...registration, passedFirstRound: true }
               : registration
           )
-        );
-        setNotification({ message: 'Duyệt vòng 1 thành công!', type: 'success' });
-        setSelectedRegistration(null);
-        setFormData({ dateTime: '', address: '' });
+        )
+        setNotification({ message: 'Duyệt vòng 1 thành công!', type: 'success' })
+        setSelectedRegistration(null)
+        setFormData({ dateTime: '', address: '' })
       } catch (error) {
-        console.error('Error updating first round approval:', error);
-        const errorMessage = error.response?.data?.message || error.message || '[Unknown Error]';
-        setNotification({ message: `Nhập thời gian và địa điểm cho ứng viên`, type: 'error' });
+        console.error('Error updating first round approval:', error)
+        setNotification({ message: `Nhập thời gian và địa điểm cho ứng viên`, type: 'error' })
       }
     }
-  };
+  }
 
   const handleSecondRoundApproval = async (registrationId) => {
     try {
-      await RegistrationService.updatePassedSecondRound(registrationId);
+      await RegistrationService.updatePassedSecondRound(registrationId)
       setRegistrations(prevRegistrations =>
         prevRegistrations.map(registration =>
           registration._id === registrationId
             ? { ...registration, passedSecondRound: true }
             : registration
         )
-      );
-      setNotification({ message: 'Duyệt vòng 2 thành công!', type: 'success' });
+      )
+      setNotification({ message: 'Duyệt vòng 2 thành công!', type: 'success' })
     } catch (error) {
-      console.error('Error updating second round approval:', error.response?.data || error.message);
-      setNotification({ message: 'Đã xảy ra lỗi khi duyệt vòng 2!', type: 'error' });
+      console.error('Error updating second round approval:', error.response?.data || error.message)
+      setNotification({ message: 'Đã xảy ra lỗi khi duyệt vòng 2!', type: 'error' })
     }
-  };
+  }
 
   const handleDeleteRegistration = (registrationId) => {
-    setShowDeleteConfirm(true);
-    setRegistrationToDelete(registrationId); // Lưu ID của đơn đăng ký cần xóa
-  };
+    setShowDeleteConfirm(true)
+    setRegistrationToDelete(registrationId)
+  }
 
   const cancelDeleteAdmin = () => {
-    setShowDeleteConfirm(false);
-  };
-  
-  
+    setShowDeleteConfirm(false)
+  }
+
   const confirmDelete = async () => {
     try {
-      await RegistrationService.deleteRegistration(registrationToDelete);
+      await RegistrationService.deleteRegistration(registrationToDelete)
       setRegistrations(prevRegistrations =>
         prevRegistrations.filter(registration => registration._id !== registrationToDelete)
-      );
-      setNotification({ message: 'Đã xóa đơn đăng ký!', type: 'success' });
+      )
+      setNotification({ message: 'Đã xóa đơn đăng ký!', type: 'success' })
     } catch (error) {
-      console.error('Error deleting registration:', error.message);
-      setNotification({ message: `Error deleting registration: ${error.message}`, type: 'error' });
+      console.error('Error deleting registration:', error.message)
+      setNotification({ message: `Error deleting registration: ${error.message}`, type: 'error' })
     } finally {
-      setShowDeleteConfirm(false);
+      setShowDeleteConfirm(false)
     }
-  };
-  
-  
+  }
 
   const handleFormChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+  }
 
   const openDetailForm = (registration) => {
-    setSelectedRegistration(registration);
-    setFormData({ dateTime: '', address: '' }); // Reset form data
-  };
-  
+    setSelectedRegistration(registration)
+    setFormData({ dateTime: '', address: '' })
+  }
 
   const filteredRegistrations = () => {
+    
     const filteredByTab = registrations.filter(r => {
       switch (activeTab) {
         case 'approved-all':
-          return r.passedFirstRound && r.passedSecondRound;
+          return r.passedFirstRound && r.passedSecondRound
         case 'approved-first':
-          return r.passedFirstRound && !r.passedSecondRound;
+          return r.passedFirstRound && !r.passedSecondRound
         case 'pending':
-          return !r.passedFirstRound;
+          return !r.passedFirstRound
         case 'approved-second':
-          return r.passedFirstRound && !r.passedSecondRound;
+          return r.passedFirstRound && !r.passedSecondRound
         default:
-          return true; // Tab 'all', return all registrations
+          return true
       }
-    });
-  
+    })
+    
+
     return filteredByTab.filter(r =>
       r.fullName.toLowerCase().includes(searchQuery.toLowerCase()) ||
       r.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
       r.phone.includes(searchQuery)
-    );
-  };
-  
+    )
+  }
+
   const handleSearchChange = (e) => {
-    const { value } = e.target;
-    setSearchQuery(value);
-  };
+    const { value } = e.target
+    setSearchQuery(value)
+  }
+
+  const genderMap = {
+    male: 'Nam',
+    female: 'Nữ',
+    other: 'Khác',
+  }
   
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p>Loading...</p>
   }
+
+  console.log("registrations filter: ", filteredRegistrations())
 
   return (
 
@@ -193,17 +194,19 @@ const RegistrationManagement = () => {
             <li className="registration-list-item" key={registration._id}>
               <div className="registration-info">
                 <div className="registration-details">
-                  <span className="registration-stt">{index + 1}</span>
-                  <span className="registration-name">Họ và tên: {registration.fullName}</span>
-                  <span className="registration-class">Lớp:  ({registration.class})</span>
-                  <span className="registration-phone">SĐT: {registration.phone}</span>
-                  <span className="registration-email">Email: {registration.email}</span>
-                  <span className="registration-dob">Ngày sinh: {new Date(registration.dateOfBirth).toLocaleDateString()}</span>
-                  <span className="registration-sex">Giới tính: {registration.sex}</span>
+                  <span className="registration-stt">{index + 1}. </span>
+                  <span className="">Họ và tên: <b> {registration.fullName}</b></span>
+                  <p className="registration-class">Lớp:  <b>{registration.class}</b></p>
+                  <p className="registration-phone">SĐT: <b>{registration.phone}</b></p>
+                  <p className="registration-email">Email: <b>{registration.email}</b></p>
+                  <p className="registration-dob">Ngày sinh: <b>{new Date(registration.dateOfBirth).toLocaleDateString()}</b></p>
+                  <p className="registration-sex">Giới tính: <b>{genderMap[registration.sex]}</b></p>
+                  <p style={{textAlign: 'center'}}> <b>Câu hỏi:</b></p>
                   <div className="registration-questions">
-                    {registration.questions.map((q, index) => (
+                    {registration.answers.map((q, index) => (
                       <div key={index}>
-                        <strong>{q.question}</strong>: {q.answer}
+                        <span> <b>{index + 1}. {q.question}</b></span>
+                        <p> {q.answer}</p>
                       </div>
                     ))}
                   </div>
@@ -310,7 +313,7 @@ const RegistrationManagement = () => {
             </>
           )}
     </div>
-  );
-};
+  )
+}
 
-export default RegistrationManagement;
+export default RegistrationManagement
