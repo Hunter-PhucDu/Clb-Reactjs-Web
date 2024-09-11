@@ -19,7 +19,7 @@ const RegistrationManagement = () => {
       try {
         const data = await RegistrationService.getRegistrations()
         console.log("registrations: ", data.data)
-        setRegistrations(data.data || []) // Đảm bảo giá trị mặc định là mảng
+        setRegistrations(data.data || [])
         setLoading(false)
       } catch (error) {
         console.error('Error fetching registrations:', error.message)
@@ -151,9 +151,7 @@ const RegistrationManagement = () => {
   console.log("registrations filter: ", filteredRegistrations())
 
   return (
-
-    
-    <div className="registration-management">
+<div className="registration-management">
       <h1>Quản lý Đăng ký</h1>
       <div className="search-container">
         <Notification 
@@ -188,6 +186,7 @@ const RegistrationManagement = () => {
       <div className="member-count">
           Tổng: {filteredRegistrations().length}
       </div>
+
       <div className="tab-content">
         <ul className="registration-list">
           {filteredRegistrations().map((registration, index) => ( 
@@ -245,7 +244,7 @@ const RegistrationManagement = () => {
             <p><strong>Giới tính:</strong> {selectedRegistration.sex}</p>
             <p><strong>Điện thoại:</strong> {selectedRegistration.phone}</p>
             <div className="registration-questions">
-              {selectedRegistration.questions.map((q, index) => (
+              {selectedRegistration.answers.map((q, index) => (
                 <div key={index}>
                   <strong>{q.question}</strong>: {q.answer}
                 </div>
@@ -313,7 +312,7 @@ const RegistrationManagement = () => {
             </>
           )}
     </div>
-  )
-}
+  );
+};
 
-export default RegistrationManagement
+export default RegistrationManagement;
